@@ -2,9 +2,9 @@ import React from "react"
 import { connect } from "react-redux"
 import { useStaticQuery, graphql } from "gatsby"
 import * as ActionTypes from "../../store/action"
+import { Convert } from "../../utils/convert";
 const State = props => {
-    console.log(5, props);
-  if (!props.isLoaded) {
+//   if (!props.isLoaded) {
     const data = useStaticQuery(
       graphql`
         {
@@ -35,9 +35,14 @@ const State = props => {
         }
       `
     )
+    let {allContentfulNavigationLink, allContentfulPage} = data;
 
-    console.log(1, data);
-  }
+    let navLinks = Convert.toModelArray(allContentfulNavigationLink, Convert.toNavLinkModel);
+    let pages = Convert.toModelArray(allContentfulPage, Convert.toPageModel);
+    props.setNavLinks(navLinks);
+    props.setPages(pages);
+    props.loaded();
+//   }
 
 
   return <></>
