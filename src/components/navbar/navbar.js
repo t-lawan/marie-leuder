@@ -1,14 +1,12 @@
 import React from "react"
 import styled from "styled-components"
 import { connect } from "react-redux"
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { richTextOptions } from "../../utils/richtext";
-import { levels } from "../../index.styles";
-import AniLink from "gatsby-plugin-transition-link/AniLink";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import { richTextOptions } from "../../utils/richtext"
+import { levels } from "../../index.styles"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
-const NavbarLink = styled(AniLink)`
-
-`
+const NavbarLink = styled(AniLink)``
 const NavbarWrapper = styled.div`
   padding: 1rem;
   z-index: ${levels.navbar};
@@ -17,7 +15,14 @@ const NavbarWrapper = styled.div`
 const NavbarRow = styled.div`
   display: flex;
   justify-content: space-between;
+  flex-direction: row;
   margin: auto;
+  padding-bottom: 1rem;
+`
+
+const TopNavbarRow = styled.div`
+  /* position: fixed; */
+  top: 0;
 `
 
 const PageContent = styled.section`
@@ -30,28 +35,30 @@ const PageContent = styled.section`
   z-index: ${levels.navbar};
   @keyframes fadeIn {
     0% {
-        opacity: 0;
-        transform: translateY(-10%);
-    } 
-    100% {
-        opacity: 1;
-        transform: translateY(0);
+      /* opacity: 0; */
+      transform: translateY(-100%);
     }
-}
+    100% {
+      /* opacity: 1; */
+      transform: translateY(0);
+    }
+  }
 
-@keyframes fadeOut {
+  @keyframes fadeOut {
     0% {
-        opacity: 1;
-        transform: translateY(0);
-    } 
-    100% {
-        opacity: 0;
-        transform: translateY(-10%);
+      opacity: 1;
+      transform: translateY(0);
     }
-}
+    100% {
+      opacity: 0;
+      transform: translateY(-10%);
+    }
+  }
 `
 const NavbarTitle = styled.p`
   text-align: center;
+  color: pink;
+  z-index: ${levels.navbarText};
 `
 class Navbar extends React.Component {
   constructor(props) {
@@ -59,10 +66,9 @@ class Navbar extends React.Component {
   }
   links
   pages
-  
 
   componentDidMount() {
-    this.hideAllLinks();
+    this.hideAllLinks()
   }
 
   hideAllLinks = () => {
@@ -75,8 +81,8 @@ class Navbar extends React.Component {
   }
 
   togglePageContent = link_id => {
-    this.hideAllLinks();
-    this.setState({ 
+    this.hideAllLinks()
+    this.setState({
       [link_id]: !this.state[link_id],
     })
   }
@@ -86,30 +92,33 @@ class Navbar extends React.Component {
 
     return (
       <NavbarWrapper>
-        <NavbarRow>
-          {this.links.map((link, index) => (
-            <div key={index}>
-              {/* <NavbarLink to={`/${link.slug}`}>
-              {link.title}{" "}
-
-              </NavbarLink> */}
-              <NavbarTitle onClick={() => this.togglePageContent(link.id)}>
+        <TopNavbarRow>
+          <NavbarRow>
+            {this.links.map((link, index) => (
+              <NavbarTitle
+                key={index}
+                onClick={() => this.togglePageContent(link.id)}
+              >
                 {" "}
                 {link.title}{" "}
               </NavbarTitle>
-            </div>
-          ))}
-        </NavbarRow>
+            ))}
+          </NavbarRow>
+        </TopNavbarRow>
 
         <NavbarRow>
           {this.links.map((link, index) => (
             <div key={index}>
-              <PageContent onClick={() => this.togglePageContent(link.id)} hidden={this.state ? !this.state[link.id] : true}>
-                {
-                  documentToReactComponents(this.pages.find(page => {
+              <PageContent
+                onClick={() => this.togglePageContent(link.id)}
+                hidden={this.state ? !this.state[link.id] : true}
+              >
+                {documentToReactComponents(
+                  this.pages.find(page => {
                     return page.id === link.page_id
-                  }).content.json, richTextOptions)
-                }
+                  }).content.json,
+                  richTextOptions
+                )}
               </PageContent>
             </div>
           ))}
