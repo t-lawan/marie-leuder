@@ -82,7 +82,11 @@ li {
   list-style-type: lower-roman;
 }
 `
-
+export const levels = {
+  background: -100,
+  jumbotron: 50,
+  navbar: 150
+}
 export const size = {
   mobileS: "320px",
   mobileM: "375px",
