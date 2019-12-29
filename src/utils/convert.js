@@ -7,7 +7,9 @@ export class Convert {
             contentfulModel.contentful_id,
             contentfulModel.title,
             contentfulModel.externalLink,
-            contentfulModel.page.contentful_id
+            contentfulModel.page.contentful_id,
+            contentfulModel.page.slug,
+            false
         )
     }
 
@@ -15,6 +17,7 @@ export class Convert {
         return new PageModel(
             contentfulModel.contentful_id,
             contentfulModel.title,
+            contentfulModel.slug,
             contentfulModel.template,
             contentfulModel.content
         )
