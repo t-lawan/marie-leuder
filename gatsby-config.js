@@ -6,11 +6,23 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-styled-components`,
+    `gatsby-plugin-netlify`,
+    `gatsby-plugin-transition-link`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `ig6pa91bw1wr`,
+        // Learn about environment variables: https://gatsby.dev/env-vars
+        accessToken: "ODyY86iVfxNO2H1H5tpeuOi7srB8kZp4gLydfp-P8UE",
+        downloadLocal: true,
       },
     },
     `gatsby-transformer-sharp`,
