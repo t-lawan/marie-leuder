@@ -4,7 +4,7 @@ import { GlobalStyle } from "../../index.styles"
 import State from "../state/state";
 import Navbar from "../navbar/navbar";
 import Background from "../background/background";
-
+import Jumbotron from "../jumbotron/jumbotron";
 const LayoutWrapper = styled.div`
   padding: 1em;
 `
@@ -19,14 +19,12 @@ const Layout = props => {
       <Background />
       <Navbar />
       <Main>
+        <Jumbotron />
         {props.children}
       </Main>
     </LayoutWrapper>
   )
 }
 
-// Layout.propTypes = {
-//   children: PropTypes.node.isRequired
-// }
 
 export default Layout
