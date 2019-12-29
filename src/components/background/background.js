@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import MP4Video from "../../assets/Marie Lueder Web Sketch.mp4"
+import { levels } from "../../index.styles";
 const VideoWrapper = styled.video`
   position: fixed;
   top: 50%;
@@ -9,14 +9,25 @@ const VideoWrapper = styled.video`
   min-height: 100%;
   width: auto;
   height: auto;
-  z-index: -100;
+  z-index: ${levels.background};
   transform: translate(-50%, -50%);
 `
-const Background = props => {
 
+const Background = props => {
+    let randomNumber = Math.floor(Math.random() * 3)
+    if(randomNumber > 2) {
+        randomNumber = 2;
+    }
+    let urls = [
+        "https://marie-leuder.s3.eu-west-2.amazonaws.com/jezmi+mp4.mp4",
+        "https://marie-leuder.s3.eu-west-2.amazonaws.com/dave.mp4",
+        "https://marie-leuder.s3.eu-west-2.amazonaws.com/Marks+view.mp4"
+      ]
+
+      console.log(randomNumber);
     return (
         <VideoWrapper autoPlay muted loop >
-            <source src={MP4Video} type="video/mp4"></source>
+            <source src={urls[randomNumber]} type="video/mp4"></source>
         </VideoWrapper>
     )
 }
