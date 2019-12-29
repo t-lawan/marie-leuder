@@ -16,6 +16,7 @@ const State = props => {
                 externalLink
                 page {
                   contentful_id
+                  slug
                 }
               }
             }
@@ -25,6 +26,7 @@ const State = props => {
               node {
                 contentful_id
                 title
+                slug
                 content {
                   json
                 }

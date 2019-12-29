@@ -19,7 +19,6 @@ const Layout = props => {
       <Background />
       <Navbar />
       <Main>
-        <Jumbotron />
         {props.children}
       </Main>
     </LayoutWrapper>

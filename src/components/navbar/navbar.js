@@ -4,7 +4,11 @@ import { connect } from "react-redux"
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { richTextOptions } from "../../utils/richtext";
 import { levels } from "../../index.styles";
+import AniLink from "gatsby-plugin-transition-link/AniLink";
 
+const NavbarLink = styled(AniLink)`
+
+`
 const NavbarWrapper = styled.div`
   padding: 1rem;
   z-index: ${levels.navbar};
@@ -72,7 +76,7 @@ class Navbar extends React.Component {
 
   togglePageContent = link_id => {
     this.hideAllLinks();
-    this.setState({
+    this.setState({ 
       [link_id]: !this.state[link_id],
     })
   }
@@ -85,6 +89,10 @@ class Navbar extends React.Component {
         <NavbarRow>
           {this.links.map((link, index) => (
             <div key={index}>
+              {/* <NavbarLink to={`/${link.slug}`}>
+              {link.title}{" "}
+
+              </NavbarLink> */}
               <NavbarTitle onClick={() => this.togglePageContent(link.id)}>
                 {" "}
                 {link.title}{" "}
