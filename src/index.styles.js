@@ -84,8 +84,9 @@ li {
 `
 export const levels = {
   background: -100,
-  jumbotron: 50,
-  navbar: 150
+  jumbotron: -1,
+  navbar: 150,
+  navbarText: 300
 }
 export const size = {
   mobileS: "320px",
