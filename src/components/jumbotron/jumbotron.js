@@ -5,14 +5,19 @@ import styled from "styled-components"
 import { levels } from '../../index.styles';
 const JumbotronWrapper = styled.section`
         z-index: ${levels.jumbotron};
-        position: relative;
+        position: fixed;
+        width: auto;
+        height: auto;
+        min-height: 80%;
+        min-width: 80%;
+        top: 25%;
+        left: 10%;
+        margin:auto;
+
 `
 
 const JumbotronImage = styled.img`
-margin:auto;
-left:0;
-right:0;
-
+/* max-width: 80%; */
 
 `
 const Jumbotron = props => {
