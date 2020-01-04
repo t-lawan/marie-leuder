@@ -1,5 +1,7 @@
 import { NavLinkModel } from "../models/NavLinkModel";
 import { PageModel } from "../models/PageModel";
+import Background from "../components/background/background";
+import { VideoModel } from "../models/VideoModel";
 
 export class Convert {
     static toNavLinkModel = contentfulModel => {
@@ -20,6 +22,14 @@ export class Convert {
             contentfulModel.slug,
             contentfulModel.template,
             contentfulModel.content
+        )
+    }
+
+    static toVideoModel = contentfulModel => {
+        return new VideoModel(
+            contentfulModel.contentful_id,
+            contentfulModel.title,
+            contentfulModel.url
         )
     }
 

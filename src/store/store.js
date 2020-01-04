@@ -3,6 +3,7 @@ import * as actionTypes from "./action"
 const initialState = {
   pages: [],
   navbarLinks: [],
+  videos: [],
   isLoaded: false,
 }
 const reducer = (state = initialState, action) => {
@@ -19,6 +20,10 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         isLoaded: true,
       })
+    case actionTypes.SET_VIDEOS: 
+      return Object.assign({}, state, {
+        videos: action.videos
+      })
     default:
       return state
   }
@@ -26,5 +31,5 @@ const reducer = (state = initialState, action) => {
 export const store = () =>
   createStore(
     reducer,
-    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
