@@ -28,7 +28,8 @@ const TopNavbarRow = styled.div`
 const PageContent = styled.section`
   background: white;
   padding: 1rem;
-  max-width: 34vw;
+  width: 34vw;
+  height: 85vh;
   overflow-y: scroll;
   animation-name: fadeIn;
   animation-duration: 2s;
