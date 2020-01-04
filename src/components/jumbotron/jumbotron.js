@@ -1,5 +1,4 @@
 import React from 'react';
-import BlackLogo from '../assets/LUEDER-LOGO-BLACK.svg';
 import WhiteLogo from '../assets/LUEDER-LOGO-WHITE.svg';
 import styled from "styled-components"
 import { levels } from '../../index.styles';

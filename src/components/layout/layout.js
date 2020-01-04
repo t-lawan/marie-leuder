@@ -4,7 +4,6 @@ import { GlobalStyle } from "../../index.styles"
 import State from "../state/state";
 import Navbar from "../navbar/navbar";
 import Background from "../background/background";
-import Jumbotron from "../jumbotron/jumbotron";
 const LayoutWrapper = styled.div`
   padding: 1em;
 `

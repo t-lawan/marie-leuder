@@ -4,9 +4,9 @@ import { connect } from "react-redux"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { richTextOptions } from "../../utils/richtext"
 import { levels } from "../../index.styles"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
+// import AniLink from "gatsby-plugin-transition-link/AniLink"
 
-const NavbarLink = styled(AniLink)``
+// const NavbarLink = styled(AniLink)``
 const NavbarWrapper = styled.div`
   padding: 1rem;
   z-index: ${levels.navbar};
@@ -28,7 +28,8 @@ const TopNavbarRow = styled.div`
 const PageContent = styled.section`
   background: white;
   padding: 1rem;
-  max-width: 34vw;
+  width: 34vw;
+  height: 85vh;
   overflow-y: scroll;
   animation-name: fadeIn;
   animation-duration: 2s;
@@ -61,9 +62,6 @@ const NavbarTitle = styled.p`
   z-index: ${levels.navbarText};
 `
 class Navbar extends React.Component {
-  constructor(props) {
-    super(props)
-  }
   links
   pages
 
