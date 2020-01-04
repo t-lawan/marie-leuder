@@ -8,9 +8,9 @@ const JumbotronWrapper = styled.section`
         width: auto;
         height: auto;
         min-height: 80%;
-        min-width: 80%;
-        top: 25%;
-        left: 10%;
+        min-width: 60%;
+        top: 30%;
+        left: 20%;
         margin:auto;
 
 `
