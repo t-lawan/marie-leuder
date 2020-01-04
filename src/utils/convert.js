@@ -1,6 +1,5 @@
 import { NavLinkModel } from "../models/NavLinkModel";
 import { PageModel } from "../models/PageModel";
-import Background from "../components/background/background";
 import { VideoModel } from "../models/VideoModel";
 
 export class Convert {
