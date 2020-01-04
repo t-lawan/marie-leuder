@@ -3,6 +3,7 @@ import * as actionTypes from "./action"
 const initialState = {
   pages: [],
   navbarLinks: [],
+  videos: [],
   isLoaded: false,
 }
 const reducer = (state = initialState, action) => {
@@ -18,6 +19,10 @@ const reducer = (state = initialState, action) => {
     case actionTypes.IS_LOADED:
       return Object.assign({}, state, {
         isLoaded: true,
+      })
+    case actionTypes.SET_VIDEOS: 
+      return Object.assign({}, state, {
+        videos: action.videos
       })
     default:
       return state

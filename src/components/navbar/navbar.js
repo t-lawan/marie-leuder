@@ -4,12 +4,18 @@ import { connect } from "react-redux"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { richTextOptions } from "../../utils/richtext"
 import { levels } from "../../index.styles"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
+import CloseIcon from '../assets/close.svg';
+// import AniLink from "gatsby-plugin-transition-link/AniLink"
 
-const NavbarLink = styled(AniLink)``
+// const NavbarLink = styled(AniLink)``
 const NavbarWrapper = styled.div`
   padding: 1rem;
   z-index: ${levels.navbar};
+  max-height: 100vh;
+`
+
+const CloseImage = styled.img`
+  width: 10%;
 `
 
 const NavbarRow = styled.div`
@@ -28,7 +34,8 @@ const TopNavbarRow = styled.div`
 const PageContent = styled.section`
   background: white;
   padding: 1rem;
-  max-width: 34vw;
+  width: 34vw;
+  height: 85vh;
   overflow-y: scroll;
   animation-name: fadeIn;
   animation-duration: 2s;
@@ -55,15 +62,18 @@ const PageContent = styled.section`
     }
   }
 `
-const NavbarTitle = styled.p`
+
+const PageContentHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+`
+const NavbarTitle = styled.h2`
   text-align: center;
-  color: pink;
+  color: white;
   z-index: ${levels.navbarText};
 `
 class Navbar extends React.Component {
-  constructor(props) {
-    super(props)
-  }
   links
   pages
 
@@ -73,7 +83,6 @@ class Navbar extends React.Component {
 
   hideAllLinks = () => {
     this.links.forEach(link => {
-      // console.log(link)
       this.setState({
         [link.id]: false,
       })
@@ -100,7 +109,7 @@ class Navbar extends React.Component {
                 onClick={() => this.togglePageContent(link.id)}
               >
                 {" "}
-                {link.title}{" "}
+                {link.title.toUpperCase()}{" "}
               </NavbarTitle>
             ))}
           </NavbarRow>
@@ -110,9 +119,13 @@ class Navbar extends React.Component {
           {this.links.map((link, index) => (
             <div key={index}>
               <PageContent
-                onClick={() => this.togglePageContent(link.id)}
+                
                 hidden={this.state ? !this.state[link.id] : true}
               >
+                <PageContentHeader onClick={() => this.togglePageContent(link.id)}>
+                  <h2> {link.title} </h2>
+                  <CloseImage src={CloseIcon} alt="x" />
+                </PageContentHeader>
                 {documentToReactComponents(
                   this.pages.find(page => {
                     return page.id === link.page_id
