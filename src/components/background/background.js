@@ -1,9 +1,13 @@
 import React from "react"
 import styled from "styled-components"
-import { levels } from "../../index.styles";
+import { levels } from "../../index.styles"
 import { connect } from "react-redux"
-import { shuffle } from "../../utils/shuffle";
-
+import * as ActionTypes from "../../store/action"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons"
 const VideoWrapper = styled.video`
   position: fixed;
   top: 50%;
@@ -16,53 +20,120 @@ const VideoWrapper = styled.video`
   transform: translate(-50%, -50%);
 `
 
+const BackgroundWrapper = styled.div`
+  margin: 0;
+  padding: 0;
+`
+
+const NavigationButton = styled(FontAwesomeIcon)`
+  :hover {
+    cursor: pointer;
+  }
+  font-size: 2rem;
+  color: white;
+`
+
+const VideoNavigation = styled.div`
+  z-index: ${levels.navbar};
+  min-width: 100%;
+  min-height: 100%;
+  padding: 1rem;
+  /* width: auto;
+  height: auto; */
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: fixed;
+  top: 50%;
+`
+
 class Background extends React.Component {
-    videos;
-    index;
-    videoRef;
-    constructor(props) {
-        super(props);
-        this.index = 0;
-        this.videos = shuffle(this.props.videos);
-        this.videoRef = React.createRef();
-    }
-    
-    componentDidMount() {
-        console.log(this.videoRef);
-    }
+  videos
+  index
+  videoRef
+  constructor(props) {
+    super(props)
 
-    nextVideo = () => {
-        if(this.index === this.videos.length - 1) {
-            this.index = 0;
-        } else {
-            this.index++;
-        }
-        this.videoRef.play();
+    this.state = {
+      index: 0,
     }
+    this.videos = this.props.videos
+  }
 
-    previousVideo = () => {
-        if(this.index === 0) {
-            this.index = this.videos.length - 1;
-        } else {
-            this.index--;
-        }
+  componentDidMount() {
+    this.videoRef = React.createRef()
 
-        this.videoRef.play();
-    }
+  }
 
-    render() {
-        return (
-            <VideoWrapper onEnded={() => this.nextVideo()} ref={this.videoRef} autoPlay muted loop>
-                <source src={this.videos[this.index].url} type="video/mp4"></source>
-            </VideoWrapper>
-        )
-    }
-}
-const mapStateToProps = state => {
-    return {
-      videos: state.videos
+  nextVideo = () => {
+    if (this.state.index === this.videos.length - 1) {
+      this.setState({
+        index: 0,
+      })
+    } else {
+      this.setState({
+        index: this.state.index + 1,
+      })
+
+      this.videoRef.current.load()
     }
   }
 
-  export default connect(mapStateToProps, null)(Background)
+  previousVideo = () => {
+    if (this.state.index === 0) {
+      this.setState({
+        index: this.videos.length - 1,
+      })
+    } else {
+      this.setState({
+        index: this.state.index - 1,
+      })
+    }
+    this.videoRef.current.load()
+  }
 
+  render() {
+    return (
+      <BackgroundWrapper>
+        <VideoWrapper
+          onEnded={() => this.nextVideo()}
+          ref={this.videoRef}
+          autoPlay
+          muted
+          loop
+        >
+          <source
+            src={this.videos[this.state.index].url}
+            type="video/mp4"
+          ></source>
+        </VideoWrapper>
+        <VideoNavigation>
+          <NavigationButton
+            icon={faChevronLeft}
+            onClick={() => this.previousVideo()}
+          />
+          <NavigationButton
+            icon={faChevronRight}
+            onClick={() => this.nextVideo()}
+          />
+        </VideoNavigation>
+      </BackgroundWrapper>
+    )
+  }
+}
+const mapStateToProps = state => {
+  return {
+    videos: state.videos,
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    setCurrentVideo: currentVideo =>
+      dispatch({
+        type: ActionTypes.SET_CURRENT_VIDEO,
+        currentVideo: currentVideo,
+      }),
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Background)

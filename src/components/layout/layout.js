@@ -5,7 +5,7 @@ import State from "../state/state";
 import Navbar from "../navbar/navbar";
 import Background from "../background/background";
 const LayoutWrapper = styled.div`
-  padding: 1em;
+  /* padding: 1em; */
 `
 const Main = styled.main`
   padding: 1em;

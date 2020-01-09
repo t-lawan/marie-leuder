@@ -5,6 +5,7 @@ const initialState = {
   navbarLinks: [],
   videos: [],
   isLoaded: false,
+  currentVideo: null
 }
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -23,6 +24,10 @@ const reducer = (state = initialState, action) => {
     case actionTypes.SET_VIDEOS: 
       return Object.assign({}, state, {
         videos: action.videos
+      })
+    case actionTypes.SET_CURRENT_VIDEO:
+      return Object.assign({}, state, {
+        currentVideo: action.currentVideo
       })
     default:
       return state
