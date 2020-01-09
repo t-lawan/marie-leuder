@@ -29,6 +29,8 @@ const NavigationButton = styled(FontAwesomeIcon)`
   :hover {
     cursor: pointer;
   }
+  font-size: 2rem;
+  color: white;
 `
 
 const VideoNavigation = styled.div`
