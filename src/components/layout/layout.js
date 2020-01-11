@@ -19,7 +19,7 @@ const Layout = props => {
       <State />
       <Background hideInMobile/>
       <Navbar hideInMobile/>
-      <Modal />
+      <Modal showInMobile />
       <NavbarMobile showInMobile/>
       <Main>
         {props.children}

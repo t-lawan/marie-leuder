@@ -32,9 +32,9 @@ class Modal extends React.Component {
 
   render() {
     return (
-      <ModalWrapper show={this.props.show_modal}>
+      <ModalWrapper show={this.props.show_modal && this.props.showInMobile}>
         <ModalHeader>
-          <p> Close </p>
+          <p> Title </p>
           <Burger
             onClick={() => this.props.hideModal()}
             isOpen={this.props.show_modal}

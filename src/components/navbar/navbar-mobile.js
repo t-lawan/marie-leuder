@@ -14,7 +14,7 @@ const NavbarMobileWrapper = styled.div`
   @media (max-width: ${size.tablet}) {
     display: ${props => (props.showInMobile ? "inherit" : "none")};
   }
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   left: 0;
   right: 0;
