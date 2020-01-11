@@ -5,6 +5,7 @@ import State from "../state/state";
 import Navbar from "../navbar/navbar";
 import Background from "../background/background";
 import NavbarMobile from "../navbar/navbar-mobile";
+import Modal from "../modal/modal";
 const LayoutWrapper = styled.div`
   /* padding: 1em; */
 `
@@ -18,6 +19,7 @@ const Layout = props => {
       <State />
       <Background hideInMobile/>
       <Navbar hideInMobile/>
+      <Modal />
       <NavbarMobile showInMobile/>
       <Main>
         {props.children}

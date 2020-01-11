@@ -22,7 +22,7 @@ const JumbotronImage = styled.img`
 `
 const Jumbotron = props => {
   return (
-    <JumbotronWrapper>
+    <JumbotronWrapper hideInMobile={props.hideInMobile}>
       <JumbotronImage src={WhiteLogo} />
     </JumbotronWrapper>
   )

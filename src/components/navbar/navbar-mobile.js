@@ -3,10 +3,13 @@ import styled from "styled-components"
 import { connect } from "react-redux"
 import { size, levels } from "../../index.styles"
 import * as ActionTypes from "../../store/action"
-import Logo from '../assets/LUEDER-LOGO-BLACK.svg';
+import Logo from "../assets/LUEDER-LOGO-BLACK.svg"
+import Burger from "@animated-burgers/burger-slip"
+import "@animated-burgers/burger-slip/dist/styles.css"
+import "./navbar-mobile.css"
 const NavbarMobileWrapper = styled.div`
   display: none;
-  padding: 1em;
+  padding: 1rem;
 
   @media (max-width: ${size.tablet}) {
     display: ${props => (props.showInMobile ? "inherit" : "none")};
@@ -18,26 +21,35 @@ const NavbarMobileWrapper = styled.div`
 `
 
 const NavbarMobileLogo = styled.img`
-    max-width: 30%;
+  max-width: 40%;
 `
 
-const NavLinksContainer = styled.nav`
-
+const NavbarHeaderMobile = styled.nav`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   z-index: ${levels.navbar};
-
 `
 
 class NavbarMobile extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      isOpen: false,
+    }
+  }
+
   render() {
     return (
       <NavbarMobileWrapper showInMobile={this.props.showInMobile}>
-        <NavLinksContainer>
+        <NavbarHeaderMobile>
           <NavbarMobileLogo src={Logo} />
-          <p> Hamburger </p>
-        </NavLinksContainer>
+          <Burger
+            onClick={() => this.props.showModal()}
+            isOpen={this.props.show_modal}
+            direction="right"
+          />
+        </NavbarHeaderMobile>
       </NavbarMobileWrapper>
     )
   }
@@ -46,14 +58,14 @@ class NavbarMobile extends React.Component {
 const mapStateToProps = state => {
   return {
     videos: state.videos,
+    show_modal: state.show_modal,
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
-    setCurrentVideo: currentVideo =>
+    showModal: () =>
       dispatch({
-        type: ActionTypes.SET_CURRENT_VIDEO,
-        currentVideo: currentVideo,
+        type: ActionTypes.SHOW_MODAL,
       }),
   }
 }
