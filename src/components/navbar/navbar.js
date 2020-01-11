@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { connect } from "react-redux"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { richTextOptions } from "../../utils/richtext"
-import { levels } from "../../index.styles"
+import { levels, size } from "../../index.styles"
 import CloseIcon from '../assets/close.svg';
 // import AniLink from "gatsby-plugin-transition-link/AniLink"
 
@@ -12,6 +12,9 @@ const NavbarWrapper = styled.div`
   padding: 1rem;
   z-index: ${levels.navbar};
   max-height: 100vh;
+  @media (max-width: ${size.tablet}) {
+    display: ${props => props.hideInMobile ? 'none' : 'inherit'};
+  }
 `
 
 const CloseImage = styled.img`
@@ -100,7 +103,7 @@ class Navbar extends React.Component {
     this.pages = this.props.pages
 
     return (
-      <NavbarWrapper>
+      <NavbarWrapper hideInMobile={this.props.hideInMobile}>
         <TopNavbarRow>
           <NavbarRow>
             {this.links.map((link, index) => (

@@ -4,6 +4,7 @@ import { GlobalStyle } from "../../index.styles"
 import State from "../state/state";
 import Navbar from "../navbar/navbar";
 import Background from "../background/background";
+import NavbarMobile from "../navbar/navbar-mobile";
 const LayoutWrapper = styled.div`
   /* padding: 1em; */
 `
@@ -15,8 +16,9 @@ const Layout = props => {
     <LayoutWrapper>
       <GlobalStyle />
       <State />
-      <Background />
-      <Navbar />
+      <Background hideInMobile/>
+      <Navbar hideInMobile/>
+      <NavbarMobile showInMobile/>
       <Main>
         {props.children}
       </Main>

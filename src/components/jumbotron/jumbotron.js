@@ -1,31 +1,31 @@
-import React from 'react';
-import WhiteLogo from '../assets/LUEDER-LOGO-WHITE.svg';
+import React from "react"
+import WhiteLogo from "../assets/LUEDER-LOGO-WHITE.svg"
 import styled from "styled-components"
-import { levels } from '../../index.styles';
+import { levels, size } from "../../index.styles"
 const JumbotronWrapper = styled.section`
-        z-index: ${levels.jumbotron};
-        position: fixed;
-        width: auto;
-        height: auto;
-        min-height: 80%;
-        min-width: 60%;
-        top: 30%;
-        left: 20%;
-        margin:auto;
-
+  z-index: ${levels.jumbotron};
+  position: fixed;
+  width: auto;
+  height: auto;
+  min-height: 80%;
+  min-width: 60%;
+  top: 30%;
+  left: 20%;
+  margin: auto;
+  @media (max-width: ${size.tablet}) {
+    display: ${props => (props.hideInMobile ? "none" : "inherit")};
+  }
 `
 
 const JumbotronImage = styled.img`
-/* max-width: 80%; */
-
+  /* max-width: 80%; */
 `
 const Jumbotron = props => {
-
-    return (
-        <JumbotronWrapper>
-            <JumbotronImage  src={WhiteLogo} />        
-        </JumbotronWrapper>
-    )
+  return (
+    <JumbotronWrapper>
+      <JumbotronImage src={WhiteLogo} />
+    </JumbotronWrapper>
+  )
 }
 
-export default Jumbotron;
+export default Jumbotron
