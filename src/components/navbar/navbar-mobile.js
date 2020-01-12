@@ -46,7 +46,7 @@ class NavbarMobile extends React.Component {
         <NavbarHeaderMobile>
           <NavbarMobileLogo src={Logo} />
           <Burger
-            onClick={() => this.props.showModal(<NavbarMobileText />)}
+            onClick={() => this.props.showModal(<NavbarMobileText />, '')}
             isOpen={this.props.show_modal}
             direction="right"
           />
@@ -64,10 +64,11 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    showModal: (component) =>
+    showModal: (component, title) =>
       dispatch({
         type: ActionTypes.SHOW_MODAL,
-        component: component
+        component: component,
+        title: title
       }),
   }
 }

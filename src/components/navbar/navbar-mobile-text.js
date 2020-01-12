@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { connect } from "react-redux"
 import * as ActionTypes from "../../store/action"
+import PageContent from "../page-content/page-content";
 
 const Link = styled.p`
     padding: 0.5rem;
@@ -13,7 +14,13 @@ class NavbarMobileText extends React.Component {
 
     selectPage = (pageId) => {
         console.log('page', pageId);
-        this.props.hideModal();
+        let page = this.props.pages.find((pg) => {
+            return pg.id === pageId;
+        })
+        // this.props.hideModal();
+        setTimeout(() => {
+            this.props.showModal(<PageContent id={pageId} />, page.title)
+        }, 5)
     }
     render() {
         return (
@@ -30,15 +37,17 @@ const mapStateToProps = state => {
     return {
       videos: state.videos,
       show_modal: state.show_modal,
-      navbarLinks: state.navbarLinks
+      navbarLinks: state.navbarLinks,
+      pages: state.pages
     }
   }
   const mapDispatchToProps = dispatch => {
     return {
-        showModal: (component) =>
+        showModal: (component, title) =>
           dispatch({
             type: ActionTypes.SHOW_MODAL,
-            component: component
+            component: component,
+            title: title
           }),
         hideModal: () => 
           dispatch({
