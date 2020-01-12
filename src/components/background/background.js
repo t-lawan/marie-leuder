@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { levels } from "../../index.styles"
+import { levels, size } from "../../index.styles"
 import { connect } from "react-redux"
 import * as ActionTypes from "../../store/action"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -18,11 +18,29 @@ const VideoWrapper = styled.video`
   height: auto;
   z-index: ${levels.background};
   transform: translate(-50%, -50%);
+  animation-name: fadeIn;
+  animation-duration: 0.2s;
+  @media (max-width: ${size.tablet}) {
+    display: ${props => props.hideInMobile ? 'none' : 'inherit'};
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-50%, -100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(-50%, -50%);
+    }
+  }
 `
 
 const BackgroundWrapper = styled.div`
   margin: 0;
   padding: 0;
+  @media (max-width: ${size.tablet}) {
+    display: ${props => props.hideInMobile ? 'none' : 'inherit'};
+  }
 `
 
 const NavigationButton = styled(FontAwesomeIcon)`
@@ -95,8 +113,9 @@ class Background extends React.Component {
 
   render() {
     return (
-      <BackgroundWrapper>
+      <BackgroundWrapper hideInMobile={this.props.hideInMobile}>
         <VideoWrapper
+          hideInMobile={this.props.hideInMobile}  
           onEnded={() => this.nextVideo()}
           ref={this.videoRef}
           autoPlay
