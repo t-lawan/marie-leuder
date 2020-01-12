@@ -2,37 +2,14 @@ import React from "react"
 import styled from "styled-components"
 import { levels } from "../../index.styles";
 import { connect } from "react-redux"
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import { richTextOptions } from "../../utils/richtext";
 
 const PageContentWrapper = styled.section`
-  background: white;
-  padding: 1rem;
-  width: 34vw;
-  height: 85vh;
+  /* padding: 1rem; */
   overflow-y: scroll;
-  animation-name: fadeIn;
-  animation-duration: 2s;
   z-index: ${levels.navbar};
-  @keyframes fadeIn {
-    0% {
-      /* opacity: 0; */
-      transform: translateY(-100%);
-    }
-    100% {
-      /* opacity: 1; */
-      transform: translateY(0);
-    }
-  }
 
-  @keyframes fadeOut {
-    0% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    100% {
-      opacity: 0;
-      transform: translateY(-10%);
-    }
-  }
 `
 
 const PageContentHeader = styled.div`
@@ -42,9 +19,14 @@ const PageContentHeader = styled.div`
 `
 
 const PageContent = props => {
+    let id = props.id;
+    let page = props.pages.find((pg) => {
+      return pg.id === id;
+    })
+    console.log(1, page)
     return (
         <PageContentWrapper>
-
+          {documentToReactComponents(page.content.json, richTextOptions)}
         </PageContentWrapper>
     )
 }

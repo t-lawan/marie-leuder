@@ -7,6 +7,8 @@ const initialState = {
   isLoaded: false,
   currentVideo: null,
   show_modal: false,
+  modal_component: null,
+  modal_title: ''
 }
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -33,10 +35,14 @@ const reducer = (state = initialState, action) => {
     case actionTypes.SHOW_MODAL:
       return Object.assign({}, state, {
         show_modal: true,
+        modal_component: action.component,
+        modal_title: action.title
       })
     case actionTypes.HIDE_MODAL:
       return Object.assign({}, state, {
         show_modal: false,
+        modal_component: null,
+        modal_title: ''
       })
     default:
       return state
