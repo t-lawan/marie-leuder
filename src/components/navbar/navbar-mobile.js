@@ -7,6 +7,7 @@ import Logo from "../assets/LUEDER-LOGO-BLACK.svg"
 import Burger from "@animated-burgers/burger-slip"
 import "@animated-burgers/burger-slip/dist/styles.css"
 import "./navbar-mobile.css"
+import NavbarMobileText from "./navbar-mobile-text";
 const NavbarMobileWrapper = styled.div`
   display: none;
   padding: 1rem;
@@ -45,7 +46,7 @@ class NavbarMobile extends React.Component {
         <NavbarHeaderMobile>
           <NavbarMobileLogo src={Logo} />
           <Burger
-            onClick={() => this.props.showModal()}
+            onClick={() => this.props.showModal(<NavbarMobileText />)}
             isOpen={this.props.show_modal}
             direction="right"
           />
@@ -63,9 +64,10 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    showModal: () =>
+    showModal: (component) =>
       dispatch({
         type: ActionTypes.SHOW_MODAL,
+        component: component
       }),
   }
 }
