@@ -19,8 +19,14 @@ const ModalWrapper = styled.div`
 const ModalHeader = styled.div`
   display: flex;
   padding: 1rem;
-  flex-direction: row;
+  flex-direction: row-reverse;
   justify-content: space-between;
+`
+
+const ModalBody = styled.div`
+
+  padding: 1rem;
+
 `
 class Modal extends React.Component {
   constructor(props) {
@@ -34,14 +40,15 @@ class Modal extends React.Component {
     return (
       <ModalWrapper show={this.props.show_modal && this.props.showInMobile}>
         <ModalHeader>
-          <p> Title </p>
           <Burger
             onClick={() => this.props.hideModal()}
             isOpen={this.props.show_modal}
             direction="right"
           />
         </ModalHeader>
-        {/* {this.props.element} */}
+        <ModalBody>
+          {this.props.component ? this.props.component : ''}
+        </ModalBody>
       </ModalWrapper>
     )
   }
@@ -65,6 +72,7 @@ const mapStateToProps = state => {
     navbarLinks: state.navbarLinks,
     pages: state.pages,
     show_modal: state.show_modal,
+    component: state.modal_component
   }
 }
 

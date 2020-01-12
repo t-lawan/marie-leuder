@@ -7,6 +7,7 @@ const initialState = {
   isLoaded: false,
   currentVideo: null,
   show_modal: false,
+  modal_component: null
 }
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -33,6 +34,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.SHOW_MODAL:
       return Object.assign({}, state, {
         show_modal: true,
+        modal_component: action.component
       })
     case actionTypes.HIDE_MODAL:
       return Object.assign({}, state, {
@@ -45,5 +47,5 @@ const reducer = (state = initialState, action) => {
 export const store = () =>
   createStore(
     reducer,
-    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
