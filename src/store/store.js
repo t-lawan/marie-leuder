@@ -5,7 +5,8 @@ const initialState = {
   navbarLinks: [],
   videos: [],
   isLoaded: false,
-  currentVideo: null
+  currentVideo: null,
+  show_modal: false,
 }
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -21,13 +22,21 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         isLoaded: true,
       })
-    case actionTypes.SET_VIDEOS: 
+    case actionTypes.SET_VIDEOS:
       return Object.assign({}, state, {
-        videos: action.videos
+        videos: action.videos,
       })
     case actionTypes.SET_CURRENT_VIDEO:
       return Object.assign({}, state, {
-        currentVideo: action.currentVideo
+        currentVideo: action.currentVideo,
+      })
+    case actionTypes.SHOW_MODAL:
+      return Object.assign({}, state, {
+        show_modal: true,
+      })
+    case actionTypes.HIDE_MODAL:
+      return Object.assign({}, state, {
+        show_modal: false,
       })
     default:
       return state
@@ -36,5 +45,5 @@ const reducer = (state = initialState, action) => {
 export const store = () =>
   createStore(
     reducer,
-    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )

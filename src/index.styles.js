@@ -11,7 +11,7 @@ body {
   height: 100%;
   margin: 0 auto;
   font-style: normal; 
-  background: rgba(242, 242, 242, 0.9); 
+  background: white; 
   }
   h1,h2,h3,h4,h5,h6 {
     margin-left: 0;
@@ -86,7 +86,8 @@ export const levels = {
   background: -100,
   jumbotron: -1,
   navbar: 150,
-  navbarText: 300
+  navbarText: 300,
+  modal: 1000
 }
 export const size = {
   mobileS: "320px",
