@@ -8,6 +8,7 @@ import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons"
+import '@fortawesome/fontawesome-svg-core/styles.css';
 const VideoWrapper = styled.video`
   position: fixed;
   top: 50%;

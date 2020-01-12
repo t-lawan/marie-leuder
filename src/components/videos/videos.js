@@ -26,7 +26,7 @@ const VideoContainer = styled.div`
 `
 
 const Video = styled.video`
-  width: 85%;
+  width: 90%;
   padding: 1rem;
   margin: auto;
   z-index: -2;
