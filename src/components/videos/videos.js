@@ -37,9 +37,9 @@ const Videos = props => {
   return (
     <VideosWrapper showInMobile={props.showInMobile}>
       {props.videos.map((video, index) => (
-        <VideoContainer>
-          <PlayButton> Hi </PlayButton>
-          <Video key={index}>
+        <VideoContainer key={index}>
+          <PlayButton> Play </PlayButton>
+          <Video >
             <source src={video.url} type="video/mp4" />
           </Video>
         </VideoContainer>
