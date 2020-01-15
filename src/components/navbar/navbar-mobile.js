@@ -4,9 +4,8 @@ import { connect } from "react-redux"
 import { size, levels } from "../../index.styles"
 import * as ActionTypes from "../../store/action"
 import Logo from "../assets/LUEDER-LOGO-WHITE.svg"
-import Burger from "@animated-burgers/burger-slip"
-import "@animated-burgers/burger-slip/dist/styles.css"
-import "./navbar-mobile.css"
+import { HamburgerElasticReverse } from 'react-animated-burgers'
+
 import NavbarMobileText from "./navbar-mobile-text";
 const NavbarMobileWrapper = styled.div`
   display: none;
@@ -45,10 +44,10 @@ class NavbarMobile extends React.Component {
       <NavbarMobileWrapper showInMobile={this.props.showInMobile}>
         <NavbarHeaderMobile>
           <NavbarMobileLogo src={Logo} />
-          <Burger
+          <HamburgerElasticReverse
             onClick={() => this.props.showModal(<NavbarMobileText />, '')}
-            isOpen={this.props.show_modal}
-            direction="right"
+            isActive={this.props.show_modal}
+            barColor="white"
           />
         </NavbarHeaderMobile>
       </NavbarMobileWrapper>
