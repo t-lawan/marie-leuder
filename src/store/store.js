@@ -3,6 +3,7 @@ import * as actionTypes from "./action"
 const initialState = {
   pages: [],
   navbarLinks: [],
+  mobileNavbarLinks: [],
   videos: [],
   isLoaded: false,
   currentVideo: null,
@@ -44,6 +45,10 @@ const reducer = (state = initialState, action) => {
         modal_component: null,
         modal_title: ''
       })
+    case actionTypes.SET_MOBILE_NAVBAR_LINKS: 
+      return Object.assign({}, state, {
+        mobileNavbarLinks: action.mobileNavbarLinks
+      })
     default:
       return state
   }
@@ -51,5 +56,5 @@ const reducer = (state = initialState, action) => {
 export const store = () =>
   createStore(
     reducer,
-    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )

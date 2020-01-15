@@ -8,7 +8,6 @@ const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
     <Jumbotron hideInMobile />
-    <Videos showInMobile />
   </Layout>
 )
 

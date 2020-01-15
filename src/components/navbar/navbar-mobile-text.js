@@ -37,7 +37,7 @@ const mapStateToProps = state => {
     return {
       videos: state.videos,
       show_modal: state.show_modal,
-      navbarLinks: state.navbarLinks,
+      navbarLinks: state.mobileNavbarLinks,
       pages: state.pages
     }
   }

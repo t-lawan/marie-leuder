@@ -29,7 +29,8 @@ const VideoContainer = styled.div`
 
 const VideoPlayer = styled.video`
   width: 90%;
-  padding: 1rem;
+  padding: 0;
+  padding-bottom: 0.5rem;
   margin: 0 auto;
   z-index: -2;
   /* position: absolute; */
