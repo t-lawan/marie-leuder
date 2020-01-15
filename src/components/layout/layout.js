@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { GlobalStyle } from "../../index.styles"
+import { GlobalStyle, size } from "../../index.styles"
 import State from "../state/state";
 import Navbar from "../navbar/navbar";
 import Background from "../background/background";
@@ -11,6 +11,9 @@ const LayoutWrapper = styled.div`
 `
 const Main = styled.main`
   padding: 1em;
+  @media (max-width: ${size.tablet}) {
+    padding: 0.3em;
+  }
 `
 const Layout = props => {
   return (
