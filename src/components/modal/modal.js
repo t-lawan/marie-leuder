@@ -4,9 +4,8 @@ import { connect } from "react-redux"
 import { levels, size } from "../../index.styles"
 import PropTypes from "prop-types"
 import * as ActionTypes from "../../store/action"
-import Burger from "@animated-burgers/burger-slip"
-import "@animated-burgers/burger-slip/dist/styles.css"
-import "../navbar/navbar-mobile.css"
+import { HamburgerElasticReverse } from 'react-animated-burgers'
+
 const ModalWrapper = styled.div`
   display: none;
   @media (max-width: ${size.tablet}) {
@@ -16,7 +15,7 @@ const ModalWrapper = styled.div`
   width: 100vw;
   height: 100vh;
   z-index: ${levels.modal};
-  background: rgb(242, 242, 242);
+  background: white;
   overflow-y: scroll;
 `
 
@@ -32,7 +31,7 @@ const ModalBody = styled.div`
   padding-top: 0;
 `
 
-const ModalTitle = styled.p`
+const ModalTitle = styled.h3`
   padding: 1rem;
   padding-left: 0;
 `
@@ -49,10 +48,10 @@ class Modal extends React.Component {
       <ModalWrapper show={this.props.show_modal && this.props.showInMobile}>
         <ModalHeader>
           <ModalTitle>{this.props.title.toUpperCase()} </ModalTitle>
-          <Burger
+          <HamburgerElasticReverse
             onClick={() => this.props.hideModal()}
-            isOpen={this.props.show_modal}
-            direction="right"
+            isActive={this.props.show_modal}
+            barColor="black"
           />
         </ModalHeader>
         <ModalBody>

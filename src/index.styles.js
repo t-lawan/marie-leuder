@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components"
 
 export const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css?family=Arimo&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Arimo:400,400i,700,700i&display=swap'):
     * {
   box-sizing: border-box;
 }
