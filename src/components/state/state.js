@@ -121,7 +121,6 @@ const mapDispatchToProps = dispatch => {
       dispatch({
         type: ActionTypes.IS_LOADED,
       }),
-    
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(State)

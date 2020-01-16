@@ -1,9 +1,21 @@
 import { createGlobalStyle } from "styled-components"
 
 export const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css?family=Arimo:400,400i,700,700i&display=swap'):
     * {
-  box-sizing: border-box;
+box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css?family=Arimo:400,400i,700,700i&display=swap');
+}
+.fade_in{
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 }
 html,
 body {
@@ -89,7 +101,7 @@ export const levels = {
   jumbotron: -1,
   navbar: 150,
   navbarText: 300,
-  modal: 1000
+  modal: 1000,
 }
 export const size = {
   mobileS: "320px",

@@ -67,7 +67,8 @@ const mapDispatchToProps = dispatch => {
       dispatch({
         type: ActionTypes.SHOW_MODAL,
         component: component,
-        title: title
+        title: title,
+        left: true
       }),
   }
 }

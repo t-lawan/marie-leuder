@@ -4,16 +4,19 @@ import { connect } from "react-redux"
 import { levels, size } from "../../index.styles"
 import PropTypes from "prop-types"
 import * as ActionTypes from "../../store/action"
-import { HamburgerElasticReverse } from 'react-animated-burgers'
+import { HamburgerElasticReverse } from "react-animated-burgers"
 
 const ModalWrapper = styled.div`
-  display: none;
+  display: ${props => (props.show ? "inherit" : "none")};
+  top: 0;
+  width: 50vw;
+  left: ${props => (props.left ? 0 : '50%')};
+  height: 100vh;
   @media (max-width: ${size.tablet}) {
-    display: ${props => (props.show ? "inherit" : "none")};
+    width: 100vw;
+    left: 0;
   }
   position: fixed;
-  width: 100vw;
-  height: 100vh;
   z-index: ${levels.modal};
   background: white;
   overflow-y: scroll;
@@ -31,7 +34,7 @@ const ModalBody = styled.div`
   padding-top: 0;
 `
 
-const ModalTitle = styled.h3`
+const ModalTitle = styled.h2`
   padding: 1rem;
   padding-left: 0;
 `
@@ -45,7 +48,10 @@ class Modal extends React.Component {
 
   render() {
     return (
-      <ModalWrapper show={this.props.show_modal && this.props.showInMobile}>
+      <ModalWrapper
+        show={this.props.show_modal}
+        left={this.props.left}
+      >
         <ModalHeader>
           <ModalTitle>{this.props.title.toUpperCase()} </ModalTitle>
           <HamburgerElasticReverse
@@ -64,6 +70,7 @@ class Modal extends React.Component {
 
 Modal.propTypes = {
   element: PropTypes.element,
+  title: PropTypes.string,
 }
 
 const mapDispatchToProps = dispatch => {
@@ -82,6 +89,7 @@ const mapStateToProps = state => {
     show_modal: state.show_modal,
     component: state.modal_component,
     title: state.modal_title,
+    left: state.modal_position_left
   }
 }
 
