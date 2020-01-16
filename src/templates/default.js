@@ -28,7 +28,6 @@ const PageContent = styled.section`
 `
 const Default = props => {
   let page = props.pageContext
-  console.log("prop", props.pageContext)
   return (
     <Layout>
       <SEO title="Default" />

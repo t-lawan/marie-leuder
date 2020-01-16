@@ -7,23 +7,16 @@ import { richTextOptions } from "../../utils/richtext";
 
 const PageContentWrapper = styled.section`
   /* padding: 1rem; */
-  overflow-y: scroll;
   z-index: ${levels.navbar};
 
 `
 
-const PageContentHeader = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between
-`
 
 const PageContent = props => {
     let id = props.id;
     let page = props.pages.find((pg) => {
       return pg.id === id;
     })
-    console.log(1, page)
     return (
         <PageContentWrapper>
           {documentToReactComponents(page.content.json, richTextOptions)}

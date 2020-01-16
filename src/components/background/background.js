@@ -20,9 +20,9 @@ const VideoWrapper = styled.video`
   z-index: ${levels.background};
   transform: translate(-50%, -50%);
   animation-name: fadeIn;
-  animation-duration: 0.2s;
+  animation-duration: 1s;
   @media (max-width: ${size.tablet}) {
-    display: ${props => props.hideInMobile ? 'none' : 'inherit'};
+    /* display: ${props => props.hideInMobile ? 'none' : 'inherit'}; */
   }
   @keyframes fadeIn {
     0% {
@@ -48,7 +48,7 @@ const NavigationButton = styled(FontAwesomeIcon)`
   :hover {
     cursor: pointer;
   }
-  font-size: 2rem;
+  font-size: 2rem !important;
   color: white;
 `
 
@@ -56,7 +56,6 @@ const VideoNavigation = styled.div`
   z-index: ${levels.navbar};
   min-width: 100%;
   min-height: 100%;
-  padding: 1rem;
   /* width: auto;
   height: auto; */
   color: white;
@@ -114,7 +113,7 @@ class Background extends React.Component {
 
   render() {
     return (
-      <BackgroundWrapper hideInMobile={this.props.hideInMobile}>
+      <BackgroundWrapper>
         <VideoWrapper
           hideInMobile={this.props.hideInMobile}  
           onEnded={() => this.nextVideo()}
