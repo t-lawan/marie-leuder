@@ -21,6 +21,17 @@ const State = props => {
             }
           }
         }
+        allContentfulMobileNavigationLink {
+          edges {
+            node {
+              page {
+                contentful_id
+              }
+              contentful_id
+              title
+            }
+          }
+        }
         allContentfulPage {
           edges {
             node {
@@ -46,24 +57,33 @@ const State = props => {
       }
     `
   )
-  let { allContentfulNavigationLink, allContentfulPage, allContentfulBackgroundVideo } = data
+  let {
+    allContentfulNavigationLink,
+    allContentfulPage,
+    allContentfulBackgroundVideo,
+    allContentfulMobileNavigationLink
+  } = data
 
   let navLinks = Convert.toModelArray(
     allContentfulNavigationLink,
     Convert.toNavLinkModel
   )
-  let pages = Convert.toModelArray(
-    allContentfulPage, 
-    Convert.toPageModel
+
+  let mobileNavLinks = Convert.toModelArray(
+    allContentfulMobileNavigationLink,
+    Convert.toNavLinkMobileModel
   )
+
+  let pages = Convert.toModelArray(allContentfulPage, Convert.toPageModel)
 
   let videos = Convert.toModelArray(
     allContentfulBackgroundVideo,
     Convert.toVideoModel
   )
-  props.setNavLinks(navLinks);
-  props.setPages(pages);
-  props.setVideos(videos);
+  props.setNavLinks(navLinks)
+  props.setMobileNavLinks(mobileNavLinks)
+  props.setPages(pages)
+  props.setVideos(videos)
   props.loaded()
   //   }
 
@@ -82,15 +102,20 @@ const mapDispatchToProps = dispatch => {
         type: ActionTypes.SET_NAVBAR_LINKS,
         navbarLinks: navLinks,
       }),
+    setMobileNavLinks: mobileNavbarLinks => 
+      dispatch({
+        type: ActionTypes.SET_MOBILE_NAVBAR_LINKS,
+        mobileNavbarLinks: mobileNavbarLinks
+      }),
     setPages: pages =>
       dispatch({
         type: ActionTypes.SET_PAGES,
         pages: pages,
       }),
-    setVideos: videos => 
+    setVideos: videos =>
       dispatch({
         type: ActionTypes.SET_VIDEOS,
-        videos: videos
+        videos: videos,
       }),
     loaded: () =>
       dispatch({

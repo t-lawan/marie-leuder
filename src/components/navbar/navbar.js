@@ -1,11 +1,9 @@
 import React from "react"
 import styled from "styled-components"
 import { connect } from "react-redux"
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import { richTextOptions } from "../../utils/richtext"
 import { levels, size } from "../../index.styles"
-import CloseIcon from '../assets/close.svg';
-// import AniLink from "gatsby-plugin-transition-link/AniLink"
+import * as ActionTypes from '../../store/action';
+import PageContent from "../page-content/page-content";
 
 // const NavbarLink = styled(AniLink)``
 const NavbarWrapper = styled.div`
@@ -13,68 +11,32 @@ const NavbarWrapper = styled.div`
   z-index: ${levels.navbar};
   max-height: 100vh;
   @media (max-width: ${size.tablet}) {
-    display: ${props => props.hideInMobile ? 'none' : 'inherit'};
+    display: ${props => (props.hideInMobile ? "none" : "inherit")};
   }
 `
 
-const CloseImage = styled.img`
-  width: 10%;
-`
 
 const NavbarRow = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-direction: row;
   margin: auto;
   padding-bottom: 1rem;
 `
-
 const TopNavbarRow = styled.div`
   /* position: fixed; */
   top: 0;
 `
 
-const PageContent = styled.section`
-  background: white;
-  padding: 1rem;
-  width: 34vw;
-  height: 85vh;
-  overflow-y: scroll;
-  animation-name: fadeIn;
-  animation-duration: 2s;
-  z-index: ${levels.navbar};
-  @keyframes fadeIn {
-    0% {
-      /* opacity: 0; */
-      transform: translateY(-100%);
-    }
-    100% {
-      /* opacity: 1; */
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes fadeOut {
-    0% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    100% {
-      opacity: 0;
-      transform: translateY(-10%);
-    }
-  }
-`
-
-const PageContentHeader = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between
-`
 const NavbarTitle = styled.h2`
-  text-align: center;
   color: white;
   z-index: ${levels.navbarText};
+`
+
+const NavbarTitleContainer = styled.div`
+  text-align: left;
+  padding: 1rem;
+  width: 50%;
 `
 class Navbar extends React.Component {
   links
@@ -107,38 +69,15 @@ class Navbar extends React.Component {
         <TopNavbarRow>
           <NavbarRow>
             {this.links.map((link, index) => (
-              <NavbarTitle
-                key={index}
-                onClick={() => this.togglePageContent(link.id)}
-              >
-                {" "}
-                {link.title.toUpperCase()}{" "}
-              </NavbarTitle>
+              <NavbarTitleContainer key={index}>
+                <NavbarTitle onClick={() => this.props.showModal(<PageContent id={link.page_id} /> , link.title, index === 0 ? true : false)}>
+                  {" "}
+                  {link.title.toUpperCase()}{" "}
+                </NavbarTitle>
+              </NavbarTitleContainer>
             ))}
           </NavbarRow>
         </TopNavbarRow>
-
-        <NavbarRow>
-          {this.links.map((link, index) => (
-            <div key={index}>
-              <PageContent
-                
-                hidden={this.state ? !this.state[link.id] : true}
-              >
-                <PageContentHeader onClick={() => this.togglePageContent(link.id)}>
-                  <h2> {link.title} </h2>
-                  <CloseImage src={CloseIcon} alt="x" />
-                </PageContentHeader>
-                {documentToReactComponents(
-                  this.pages.find(page => {
-                    return page.id === link.page_id
-                  }).content.json,
-                  richTextOptions
-                )}
-              </PageContent>
-            </div>
-          ))}
-        </NavbarRow>
       </NavbarWrapper>
     )
   }
@@ -150,4 +89,20 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, null)(Navbar)
+const mapDispatchToProps = dispatch => {
+  return {
+      showModal: (component, title, left) =>
+        dispatch({
+          type: ActionTypes.SHOW_MODAL,
+          component: component,
+          title: title,
+          left: left
+        }),
+      hideModal: () => 
+        dispatch({
+            type: ActionTypes.HIDE_MODAL
+        })
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar)

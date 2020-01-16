@@ -7,10 +7,9 @@ const JumbotronWrapper = styled.section`
   position: fixed;
   width: auto;
   height: auto;
-  min-height: 80%;
-  min-width: 60%;
-  top: 30%;
-  left: 20%;
+  min-height: 100%;
+  min-width: 100%;
+  top: 40%;
   margin: auto;
   @media (max-width: ${size.tablet}) {
     display: ${props => (props.hideInMobile ? "none" : "inherit")};
@@ -18,7 +17,10 @@ const JumbotronWrapper = styled.section`
 `
 
 const JumbotronImage = styled.img`
-  /* max-width: 80%; */
+  max-width: 40%;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
 `
 const Jumbotron = props => {
   return (

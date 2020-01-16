@@ -13,7 +13,6 @@ const Link = styled.p`
 class NavbarMobileText extends React.Component {
 
     selectPage = (pageId) => {
-        console.log('page', pageId);
         let page = this.props.pages.find((pg) => {
             return pg.id === pageId;
         })
@@ -37,7 +36,7 @@ const mapStateToProps = state => {
     return {
       videos: state.videos,
       show_modal: state.show_modal,
-      navbarLinks: state.navbarLinks,
+      navbarLinks: state.mobileNavbarLinks,
       pages: state.pages
     }
   }
@@ -47,7 +46,8 @@ const mapStateToProps = state => {
           dispatch({
             type: ActionTypes.SHOW_MODAL,
             component: component,
-            title: title
+            title: title,
+            left: true
           }),
         hideModal: () => 
           dispatch({

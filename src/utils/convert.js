@@ -1,16 +1,22 @@
 import { NavLinkModel } from "../models/NavLinkModel";
 import { PageModel } from "../models/PageModel";
 import { VideoModel } from "../models/VideoModel";
+import { NavLinkMobileModel } from "../models/NavMobileLinkModel";
 
 export class Convert {
     static toNavLinkModel = contentfulModel => {
         return new NavLinkModel(
             contentfulModel.contentful_id,
             contentfulModel.title,
-            contentfulModel.externalLink,
             contentfulModel.page.contentful_id,
-            contentfulModel.page.slug,
-            false
+        )
+    }
+
+    static toNavLinkMobileModel = contentfulModel => {
+        return new NavLinkMobileModel(
+            contentfulModel.contentful_id,
+            contentfulModel.title,
+            contentfulModel.page.contentful_id,
         )
     }
 
