@@ -7,11 +7,13 @@ import * as ActionTypes from "../../store/action"
 import { HamburgerElasticReverse } from "react-animated-burgers"
 
 const ModalWrapper = styled.div`
-  display: ${props => (props.show ? "inherit" : "none")};
+  display: ${props => (props.show ? "grid" : "none")};
   top: 0;
   width: 50vw;
-  left: ${props => (props.left ? 0 : '50%')};
+  left: ${props => (props.left ? 0 : "50%")};
   height: 100vh;
+  grid-template-rows: [row1-start] 15%;
+  grid-template-columns: 1fr;
   @media (max-width: ${size.tablet}) {
     width: 100vw;
     left: 0;
@@ -20,18 +22,39 @@ const ModalWrapper = styled.div`
   z-index: ${levels.modal};
   background: white;
   overflow-y: scroll;
+  grid-template-areas:
+    "header header"
+    "main main";
 `
 
+const Hamburger = styled(HamburgerElasticReverse)`
+  padding: 0.1rem;
+`
+const ModalHeaderWrapper = styled.div`
+  padding: 1rem;
+  display: ${props => (props.show ? "inherit" : "none")};
+  position: fixed;
+`
 const ModalHeader = styled.div`
+  align-content: flex-start;
   display: flex;
+  flex-grow: 1;
   padding: 1rem;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  grid-area: header;
+  display: ${props => (props.show ? "flex" : "none")};
 `
 
 const ModalBody = styled.div`
   padding: 1rem;
-  padding-top: 0;
+  padding-top: ${props => (props.noOfColumns === 1 ? "0" : "2rem")};
+  display: grid;
+  grid-template-columns: ${props =>
+    props.noOfColumns === 1 ? "1fr" : "5fr 4fr 1fr"};
+  grid-column-gap: 1rem;
+  align-items: flex-start;
 `
 
 const ModalTitle = styled.h2`
@@ -51,17 +74,29 @@ class Modal extends React.Component {
       <ModalWrapper
         show={this.props.show_modal}
         left={this.props.left}
+        noOfColumns={this.props.noOfColumns}
       >
-        <ModalHeader>
-          <ModalTitle>{this.props.title.toUpperCase()} </ModalTitle>
-          <HamburgerElasticReverse
-            onClick={() => this.props.hideModal()}
-            isActive={this.props.show_modal}
-            barColor="black"
-          />
-        </ModalHeader>
-        <ModalBody>
+        {/* <ModalHeaderWrapper show={this.props.noOfColumns === 1}> */}
+          <ModalHeader show={this.props.noOfColumns === 1}>
+            <ModalTitle>{this.props.title.toUpperCase()} </ModalTitle>
+            <Hamburger
+              onClick={() => this.props.hideModal()}
+              isActive={this.props.show_modal}
+              barColor="black"
+            />
+          </ModalHeader>
+        {/* </ModalHeaderWrapper> */}
+
+        <ModalBody noOfColumns={this.props.noOfColumns}>
           {this.props.component ? this.props.component : ""}
+          {this.props.noOfColumns > 1 ? (
+            <Hamburger
+              hidden={this.props.noOfColumns < 2}
+              onClick={() => this.props.hideModal()}
+              isActive={this.props.show_modal}
+              barColor="black"
+            />
+          ) : null}
         </ModalBody>
       </ModalWrapper>
     )
@@ -89,7 +124,8 @@ const mapStateToProps = state => {
     show_modal: state.show_modal,
     component: state.modal_component,
     title: state.modal_title,
-    left: state.modal_position_left
+    left: state.modal_position_left,
+    noOfColumns: state.modal_number_of_columns,
   }
 }
 
