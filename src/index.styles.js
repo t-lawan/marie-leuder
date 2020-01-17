@@ -99,7 +99,7 @@ li {
 `
 export const levels = {
   background: -100,
-  jumbotron: -1,
+  jumbotron: 5,
   navbar: 150,
   navbarText: 300,
   modal: 1000,
