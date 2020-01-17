@@ -15,7 +15,6 @@ const NavbarWrapper = styled.div`
   }
 `
 
-
 const NavbarRow = styled.div`
   display: flex;
   justify-content: space-evenly;
@@ -46,6 +45,16 @@ class Navbar extends React.Component {
     this.hideAllLinks()
   }
 
+  generatePages(pageIds) {
+    return (
+      <>
+        {pageIds.map((id, index) => (
+          <PageContent withTitle={true} key={index} id={id} />
+        ))}
+      </>
+    )
+  }
+
   hideAllLinks = () => {
     this.links.forEach(link => {
       this.setState({
@@ -70,7 +79,7 @@ class Navbar extends React.Component {
           <NavbarRow>
             {this.links.map((link, index) => (
               <NavbarTitleContainer key={index}>
-                <NavbarTitle onClick={() => this.props.showModal(<PageContent id={link.page_id} /> , link.title, index === 0 ? true : false)}>
+                <NavbarTitle onClick={() => this.props.showModal(this.generatePages(link.page_ids) , link.title, index === 0 ? true : false, link.page_ids.length)}>
                   {" "}
                   {link.title.toUpperCase()}{" "}
                 </NavbarTitle>
@@ -91,12 +100,13 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-      showModal: (component, title, left) =>
+      showModal: (component, title, left, noOfColumns) =>
         dispatch({
           type: ActionTypes.SHOW_MODAL,
           component: component,
           title: title,
-          left: left
+          left: left,
+          noOfColumns: noOfColumns
         }),
       hideModal: () => 
         dispatch({

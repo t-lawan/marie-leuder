@@ -14,6 +14,9 @@ const State = props => {
               contentful_id
               title
               externalLink
+              pages {
+                contentful_id
+              }
               page {
                 contentful_id
                 slug
@@ -61,13 +64,15 @@ const State = props => {
     allContentfulNavigationLink,
     allContentfulPage,
     allContentfulBackgroundVideo,
-    allContentfulMobileNavigationLink
+    allContentfulMobileNavigationLink,
   } = data
 
   let navLinks = Convert.toModelArray(
     allContentfulNavigationLink,
     Convert.toNavLinkModel
   )
+
+  navLinks.reverse()
 
   let mobileNavLinks = Convert.toModelArray(
     allContentfulMobileNavigationLink,
@@ -102,10 +107,10 @@ const mapDispatchToProps = dispatch => {
         type: ActionTypes.SET_NAVBAR_LINKS,
         navbarLinks: navLinks,
       }),
-    setMobileNavLinks: mobileNavbarLinks => 
+    setMobileNavLinks: mobileNavbarLinks =>
       dispatch({
         type: ActionTypes.SET_MOBILE_NAVBAR_LINKS,
-        mobileNavbarLinks: mobileNavbarLinks
+        mobileNavbarLinks: mobileNavbarLinks,
       }),
     setPages: pages =>
       dispatch({

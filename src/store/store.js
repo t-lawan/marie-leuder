@@ -11,6 +11,7 @@ const initialState = {
   modal_component: null,
   modal_title: '',
   modal_position_left: true,
+  modal_number_of_columns: 1
 }
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -39,7 +40,8 @@ const reducer = (state = initialState, action) => {
         show_modal: true,
         modal_component: action.component,
         modal_title: action.title,
-        modal_position_left: action.left
+        modal_position_left: action.left,
+        modal_number_of_columns: action.noOfColumns
       })
     case actionTypes.HIDE_MODAL:
       return Object.assign({}, state, {
