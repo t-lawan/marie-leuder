@@ -20,7 +20,7 @@ const Layout = props => {
     <LayoutWrapper>
       <GlobalStyle />
       <State />
-      <Background/>
+      <Background hideInMobile/>
       <Navbar hideInMobile/>
       <Modal showInMobile />
       <NavbarMobile showInMobile/>
