@@ -8,9 +8,7 @@ import { richTextOptions } from "../../utils/richtext";
 const PageContentWrapper = styled.section`
   /* padding: 1rem; */
   z-index: ${levels.navbar};
-
 `
-
 
 const PageContent = props => {
     let id = props.id;
@@ -18,7 +16,8 @@ const PageContent = props => {
       return pg.id === id;
     })
     return (
-        <PageContentWrapper>
+        <PageContentWrapper >
+          <h2 hidden={!props.withTitle}> {page.title.toUpperCase()}</h2>
           {documentToReactComponents(page.content.json, richTextOptions)}
         </PageContentWrapper>
     )

@@ -4,21 +4,20 @@ import { connect } from "react-redux"
 import * as ActionTypes from "../../store/action"
 import PageContent from "../page-content/page-content";
 
-const Link = styled.p`
+const Link = styled.h2`
     padding: 0.5rem;
     :hover {
         cursor: pointer;
     }
 `
 class NavbarMobileText extends React.Component {
-
     selectPage = (pageId) => {
         let page = this.props.pages.find((pg) => {
             return pg.id === pageId;
         })
         // this.props.hideModal();
         setTimeout(() => {
-            this.props.showModal(<PageContent id={pageId} />, page.title)
+            this.props.showModal(<PageContent withTitle={false} id={pageId} />, page.title)
         }, 5)
     }
     render() {
@@ -47,7 +46,8 @@ const mapStateToProps = state => {
             type: ActionTypes.SHOW_MODAL,
             component: component,
             title: title,
-            left: true
+            left: true,
+            noOfColumns: 1
           }),
         hideModal: () => 
           dispatch({

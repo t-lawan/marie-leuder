@@ -28,6 +28,7 @@ const NavbarHeaderMobile = styled.nav`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   z-index: ${levels.navbar};
 `
 
@@ -68,7 +69,8 @@ const mapDispatchToProps = dispatch => {
         type: ActionTypes.SHOW_MODAL,
         component: component,
         title: title,
-        left: true
+        left: true,
+        noOfColumns: 1
       }),
   }
 }
