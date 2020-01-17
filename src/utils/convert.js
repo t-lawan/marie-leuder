@@ -5,10 +5,14 @@ import { NavLinkMobileModel } from "../models/NavMobileLinkModel";
 
 export class Convert {
     static toNavLinkModel = contentfulModel => {
+        let pages = contentfulModel.pages.map((page) => {
+            return page.contentful_id;
+        })
         return new NavLinkModel(
             contentfulModel.contentful_id,
             contentfulModel.title,
             contentfulModel.page.contentful_id,
+            pages
         )
     }
 
