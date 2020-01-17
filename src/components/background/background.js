@@ -121,6 +121,7 @@ class Background extends React.Component {
           autoPlay
           muted
           loop
+          playsinline
         >
           <source
             src={this.videos[this.state.index].url}
