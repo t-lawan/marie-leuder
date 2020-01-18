@@ -113,7 +113,7 @@ class Background extends React.Component {
 
   render() {
     return (
-      <BackgroundWrapper>
+      <BackgroundWrapper hideInMobile={this.props.hideInMobile}>
         <VideoWrapper
           hideInMobile={this.props.hideInMobile}  
           onEnded={() => this.nextVideo()}
