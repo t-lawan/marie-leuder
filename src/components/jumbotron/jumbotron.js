@@ -15,7 +15,6 @@ const JumbotronWrapper = styled.section`
     display: ${props => (props.hideInMobile ? "none" : "inherit")};
   }
 `
-
 const JumbotronImage = styled.img`
   max-width: 40%;
   display: block;
