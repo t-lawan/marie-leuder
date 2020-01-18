@@ -30,6 +30,9 @@ const TopNavbarRow = styled.div`
 const NavbarTitle = styled.h2`
   color: white;
   z-index: ${levels.navbarText};
+  :hover {
+    font-style: italic;
+  }
 `
 
 const NavbarTitleContainer = styled.div`
