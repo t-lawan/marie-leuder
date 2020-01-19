@@ -17,7 +17,7 @@ class NavbarMobileText extends React.Component {
         })
         // this.props.hideModal();
         setTimeout(() => {
-            this.props.showModal(<PageContent withTitle={false} id={pageId} />, page.title)
+            this.props.showModal(<PageContent withParagraph={false} withTitle={false} id={pageId} />, page.title)
         }, 5)
     }
     render() {

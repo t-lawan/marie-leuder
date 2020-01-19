@@ -8,7 +8,8 @@ import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons"
-import '@fortawesome/fontawesome-svg-core/styles.css';
+import "@fortawesome/fontawesome-svg-core/styles.css"
+import Img from 'gatsby-image';
 const VideoWrapper = styled.video`
   position: fixed;
   top: 50%;
@@ -22,7 +23,7 @@ const VideoWrapper = styled.video`
   animation-name: fadeIn;
   animation-duration: 1s;
   @media (max-width: ${size.tablet}) {
-    /* display: ${props => props.hideInMobile ? 'none' : 'inherit'}; */
+    display: ${props => (props.hideInMobile ? "none" : "inherit")};
   }
   @keyframes fadeIn {
     0% {
@@ -40,7 +41,8 @@ const BackgroundWrapper = styled.div`
   margin: 0;
   padding: 0;
   @media (max-width: ${size.tablet}) {
-    display: ${props => props.hideInMobile ? 'none' : 'inherit'};
+  background: black;
+    display: ${props => (props.hideInMobile ? "none" : "inherit")};
   }
 `
 
@@ -56,6 +58,7 @@ const VideoNavigation = styled.div`
   z-index: ${levels.navbar};
   min-width: 100%;
   min-height: 100%;
+  background: transparent;
   /* width: auto;
   height: auto; */
   color: white;
@@ -64,12 +67,29 @@ const VideoNavigation = styled.div`
   justify-content: space-between;
   position: fixed;
   top: 50%;
+  @media (max-width: ${size.tablet}) {
+    display: ${props => (props.hideInMobile ? "none" : "inherit")};
+  }
+`
+
+const BackgroundImg = styled(Img)`
+  min-width: 100%;
+  min-height: 100%;
+  display: none;
+  z-index: ${levels.background};
+  position: fixed !important;
+
+  @media (max-width: ${size.tablet}) {
+
+    display: ${props => (props.showInMobile ? "inherit" : "none")};
+  }
 `
 
 class Background extends React.Component {
   videos
   index
   videoRef
+  visibleTransitionTime = 5000
   constructor(props) {
     super(props)
 
@@ -81,10 +101,10 @@ class Background extends React.Component {
 
   componentDidMount() {
     this.videoRef = React.createRef()
-
   }
 
   nextVideo = () => {
+    this.props.slideLeft()
     if (this.state.index === this.videos.length - 1) {
       this.setState({
         index: 0,
@@ -94,11 +114,16 @@ class Background extends React.Component {
         index: this.state.index + 1,
       })
 
+      // setTimeout(() => {
+      //   this.props.setIsVisibleToTrue()
+      // }, this.visibleTransitionTime)
+
       this.videoRef.current.load()
     }
   }
 
   previousVideo = () => {
+    this.props.slideRight()
     if (this.state.index === 0) {
       this.setState({
         index: this.videos.length - 1,
@@ -108,27 +133,34 @@ class Background extends React.Component {
         index: this.state.index - 1,
       })
     }
+
+    // setTimeout(() => {
+    //   this.props.setIsVisibleToTrue()
+    // }, this.visibleTransitionTime)
     this.videoRef.current.load()
   }
 
   render() {
     return (
-      <BackgroundWrapper hideInMobile={this.props.hideInMobile}>
+      <BackgroundWrapper>
+        <BackgroundImg showInMobile={true} fluid={this.props.background_images[0].fluid} />
         <VideoWrapper
-          hideInMobile={this.props.hideInMobile}  
+          hideInMobile={this.props.hideInMobile}
           onEnded={() => this.nextVideo()}
           ref={this.videoRef}
           autoPlay
           muted
           loop
-          playsinline
+          playsInline={true}
+          disablePictureInPicture={true}
         >
           <source
             src={this.videos[this.state.index].url}
             type="video/mp4"
           ></source>
         </VideoWrapper>
-        <VideoNavigation>
+        <VideoNavigation
+        hideInMobile={this.props.hideInMobile}>
           <NavigationButton
             icon={faChevronLeft}
             onClick={() => this.previousVideo()}
@@ -145,6 +177,8 @@ class Background extends React.Component {
 const mapStateToProps = state => {
   return {
     videos: state.videos,
+    experience_transition: state.experience_transition,
+    background_images: state.background_images
   }
 }
 const mapDispatchToProps = dispatch => {
@@ -154,6 +188,11 @@ const mapDispatchToProps = dispatch => {
         type: ActionTypes.SET_CURRENT_VIDEO,
         currentVideo: currentVideo,
       }),
+    slideLeft: () => dispatch({ type: ActionTypes.SLIDE_LEFT_TRANSITION }),
+    slideRight: () => dispatch({ type: ActionTypes.SLIDE_RIGHT_TRANSITION }),
+    setIsVisibleToTrue: () =>
+      dispatch({ type: ActionTypes.SET_IS_VISIBLE_TO_TRUE }),
   }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(Background)

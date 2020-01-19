@@ -18,6 +18,7 @@ const PageContent = props => {
     return (
         <PageContentWrapper >
           <h2 hidden={!props.withTitle}> {page.title.toUpperCase()}</h2>
+          <p hidden={!props.withParagraph}> {page.title.toUpperCase()}</p>
           {documentToReactComponents(page.content.json, richTextOptions)}
         </PageContentWrapper>
     )
