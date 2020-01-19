@@ -10,6 +10,7 @@ import NavbarMobileText from "./navbar-mobile-text";
 const NavbarMobileWrapper = styled.div`
   display: none;
   padding: 1rem;
+  z-index: ${levels.navbar};
 
   @media (max-width: ${size.tablet}) {
     display: ${props => (props.showInMobile ? "inherit" : "none")};

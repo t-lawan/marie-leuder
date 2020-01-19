@@ -14,6 +14,7 @@ const State = props => {
               contentful_id
               title
               externalLink
+              order
               pages {
                 contentful_id
               }
@@ -32,6 +33,23 @@ const State = props => {
               }
               contentful_id
               title
+            }
+          }
+        }
+        allContentfulBackgroundGif {
+          edges {
+            node {
+              contentful_id
+              image {
+                fluid {
+                  base64
+                  aspectRatio
+                  src
+                  srcSet
+                  sizes
+                }
+                title
+              }
             }
           }
         }
@@ -65,11 +83,17 @@ const State = props => {
     allContentfulPage,
     allContentfulBackgroundVideo,
     allContentfulMobileNavigationLink,
+    allContentfulBackgroundGif,
   } = data
 
   let navLinks = Convert.toModelArray(
     allContentfulNavigationLink,
     Convert.toNavLinkModel
+  )
+
+  let backgroundImages = Convert.toModelArray(
+    allContentfulBackgroundGif,
+    Convert.toBackgroundImageModel
   )
 
   navLinks.reverse()
@@ -85,6 +109,8 @@ const State = props => {
     allContentfulBackgroundVideo,
     Convert.toVideoModel
   )
+
+  props.setBackgroundImages(backgroundImages)
   props.setNavLinks(navLinks)
   props.setMobileNavLinks(mobileNavLinks)
   props.setPages(pages)
@@ -121,6 +147,11 @@ const mapDispatchToProps = dispatch => {
       dispatch({
         type: ActionTypes.SET_VIDEOS,
         videos: videos,
+      }),
+    setBackgroundImages: backgroundImages =>
+      dispatch({
+        type: ActionTypes.SET_BACKGROUND_IMAGES,
+        background_images: backgroundImages,
       }),
     loaded: () =>
       dispatch({

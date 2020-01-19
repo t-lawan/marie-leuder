@@ -2,6 +2,7 @@ import { NavLinkModel } from "../models/NavLinkModel";
 import { PageModel } from "../models/PageModel";
 import { VideoModel } from "../models/VideoModel";
 import { NavLinkMobileModel } from "../models/NavMobileLinkModel";
+import { BackgroundImageModel } from "../models/BackgroundImageModel";
 
 export class Convert {
     static toNavLinkModel = contentfulModel => {
@@ -12,7 +13,16 @@ export class Convert {
             contentfulModel.contentful_id,
             contentfulModel.title,
             contentfulModel.page.contentful_id,
-            pages
+            pages,
+            contentfulModel.order
+        )
+    }
+
+    static toBackgroundImageModel = contentfulModel => {
+        return new BackgroundImageModel(
+            contentfulModel.contentful_id,
+            contentfulModel.image.title,
+            contentfulModel.image.fluid
         )
     }
 
