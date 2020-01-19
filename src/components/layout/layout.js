@@ -19,7 +19,6 @@ const Main = styled.main`
   }
 `
 const Layout = props => {
-  console.log(props.experience_transition)
   return (
     <LayoutWrapper>
       <Animated
