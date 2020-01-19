@@ -14,6 +14,7 @@ const State = props => {
               contentful_id
               title
               externalLink
+              order
               pages {
                 contentful_id
               }

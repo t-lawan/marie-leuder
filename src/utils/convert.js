@@ -12,7 +12,8 @@ export class Convert {
             contentfulModel.contentful_id,
             contentfulModel.title,
             contentfulModel.page.contentful_id,
-            pages
+            pages,
+            contentfulModel.order
         )
     }
 

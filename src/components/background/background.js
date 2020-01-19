@@ -8,7 +8,8 @@ import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons"
-import '@fortawesome/fontawesome-svg-core/styles.css';
+import "@fortawesome/fontawesome-svg-core/styles.css"
+
 const VideoWrapper = styled.video`
   position: fixed;
   top: 50%;
@@ -22,7 +23,7 @@ const VideoWrapper = styled.video`
   animation-name: fadeIn;
   animation-duration: 1s;
   @media (max-width: ${size.tablet}) {
-    /* display: ${props => props.hideInMobile ? 'none' : 'inherit'}; */
+    /* display: ${props => (props.hideInMobile ? "none" : "inherit")}; */
   }
   @keyframes fadeIn {
     0% {
@@ -40,7 +41,7 @@ const BackgroundWrapper = styled.div`
   margin: 0;
   padding: 0;
   @media (max-width: ${size.tablet}) {
-    display: ${props => props.hideInMobile ? 'none' : 'inherit'};
+    display: ${props => (props.hideInMobile ? "none" : "inherit")};
   }
 `
 
@@ -70,6 +71,7 @@ class Background extends React.Component {
   videos
   index
   videoRef
+  visibleTransitionTime = 5000
   constructor(props) {
     super(props)
 
@@ -81,10 +83,10 @@ class Background extends React.Component {
 
   componentDidMount() {
     this.videoRef = React.createRef()
-
   }
 
   nextVideo = () => {
+    this.props.slideLeft()
     if (this.state.index === this.videos.length - 1) {
       this.setState({
         index: 0,
@@ -94,11 +96,16 @@ class Background extends React.Component {
         index: this.state.index + 1,
       })
 
+      // setTimeout(() => {
+      //   this.props.setIsVisibleToTrue()
+      // }, this.visibleTransitionTime)
+
       this.videoRef.current.load()
     }
   }
 
   previousVideo = () => {
+    this.props.slideRight()
     if (this.state.index === 0) {
       this.setState({
         index: this.videos.length - 1,
@@ -108,6 +115,10 @@ class Background extends React.Component {
         index: this.state.index - 1,
       })
     }
+
+    // setTimeout(() => {
+    //   this.props.setIsVisibleToTrue()
+    // }, this.visibleTransitionTime)
     this.videoRef.current.load()
   }
 
@@ -115,7 +126,7 @@ class Background extends React.Component {
     return (
       <BackgroundWrapper hideInMobile={this.props.hideInMobile}>
         <VideoWrapper
-          hideInMobile={this.props.hideInMobile}  
+          hideInMobile={this.props.hideInMobile}
           onEnded={() => this.nextVideo()}
           ref={this.videoRef}
           autoPlay
@@ -145,6 +156,7 @@ class Background extends React.Component {
 const mapStateToProps = state => {
   return {
     videos: state.videos,
+    experience_transition: state.experience_transition,
   }
 }
 const mapDispatchToProps = dispatch => {
@@ -154,6 +166,11 @@ const mapDispatchToProps = dispatch => {
         type: ActionTypes.SET_CURRENT_VIDEO,
         currentVideo: currentVideo,
       }),
+    slideLeft: () => dispatch({ type: ActionTypes.SLIDE_LEFT_TRANSITION }),
+    slideRight: () => dispatch({ type: ActionTypes.SLIDE_RIGHT_TRANSITION }),
+    setIsVisibleToTrue: () =>
+      dispatch({ type: ActionTypes.SET_IS_VISIBLE_TO_TRUE }),
   }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(Background)

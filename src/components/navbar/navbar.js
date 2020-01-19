@@ -73,7 +73,9 @@ class Navbar extends React.Component {
     })
   }
   render() {
-    this.links = this.props.navbarLinks
+    this.links = this.props.navbarLinks.sort((a, b) => {
+      return a.order - b.order
+    })
     this.pages = this.props.pages
 
     return (

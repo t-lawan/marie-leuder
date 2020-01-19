@@ -11,7 +11,13 @@ const initialState = {
   modal_component: null,
   modal_title: '',
   modal_position_left: true,
-  modal_number_of_columns: 1
+  modal_number_of_columns: 1,
+  experience_transition: {
+    animationIn: "slideInRight",
+    animationOut: "slideOutLeft",
+    isVisible: true,
+    isTransitioning: false,
+  },
 }
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -53,6 +59,31 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         mobileNavbarLinks: action.mobileNavbarLinks
       })
+      case actionTypes.SLIDE_RIGHT_TRANSITION:
+      return Object.assign({}, state, {
+        experience_transition: {
+          animationIn: "slideInRight",
+          animationOut: "slideOutLeft",
+          isVisible: false,
+          isTransitioning: true,
+        },
+      })
+    case actionTypes.SLIDE_LEFT_TRANSITION:
+      return Object.assign({}, state, {
+        experience_transition: {
+          animationIn: "slideInLeft",
+          animationOut: "slideOutRight",
+          isVisible: false,
+          isTransitioning: true,
+        },
+      })
+    case actionTypes.SET_IS_VISIBLE_TO_TRUE:
+      return Object.assign({}, state, {
+        experience_transition: {
+          ...state.experience_transition,
+          isVisible: true,
+        },
+      })
     default:
       return state
   }
@@ -60,5 +91,5 @@ const reducer = (state = initialState, action) => {
 export const store = () =>
   createStore(
     reducer,
-    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )

@@ -33,7 +33,7 @@ function SEO({ description, lang, meta, title }) {
         lang,
       }}
       title={title}
-      titleTemplate={`Lueder`}
+      titleTemplate={`LUEDER`}
       // titleTemplate={`%s | marie leuder`}
       meta={[
         {
