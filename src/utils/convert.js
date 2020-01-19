@@ -19,7 +19,6 @@ export class Convert {
     }
 
     static toBackgroundImageModel = contentfulModel => {
-        console.log(1, contentfulModel);
         return new BackgroundImageModel(
             contentfulModel.contentful_id,
             contentfulModel.image.title,
