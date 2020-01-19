@@ -58,6 +58,7 @@ const VideoNavigation = styled.div`
   z-index: ${levels.navbar};
   min-width: 100%;
   min-height: 100%;
+  background: transparent;
   /* width: auto;
   height: auto; */
   color: white;
@@ -79,6 +80,7 @@ const BackgroundImg = styled(Img)`
   position: fixed !important;
 
   @media (max-width: ${size.tablet}) {
+
     display: ${props => (props.showInMobile ? "inherit" : "none")};
   }
 `
@@ -149,7 +151,8 @@ class Background extends React.Component {
           autoPlay
           muted
           loop
-          playsinline
+          playsInline={true}
+          disablePictureInPicture={true}
         >
           <source
             src={this.videos[this.state.index].url}
