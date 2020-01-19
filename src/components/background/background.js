@@ -9,7 +9,7 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons"
 import "@fortawesome/fontawesome-svg-core/styles.css"
-
+import Img from 'gatsby-image';
 const VideoWrapper = styled.video`
   position: fixed;
   top: 50%;
@@ -23,7 +23,7 @@ const VideoWrapper = styled.video`
   animation-name: fadeIn;
   animation-duration: 1s;
   @media (max-width: ${size.tablet}) {
-    /* display: ${props => (props.hideInMobile ? "none" : "inherit")}; */
+    display: ${props => (props.hideInMobile ? "none" : "inherit")};
   }
   @keyframes fadeIn {
     0% {
@@ -41,6 +41,7 @@ const BackgroundWrapper = styled.div`
   margin: 0;
   padding: 0;
   @media (max-width: ${size.tablet}) {
+  background: black;
     display: ${props => (props.hideInMobile ? "none" : "inherit")};
   }
 `
@@ -65,6 +66,21 @@ const VideoNavigation = styled.div`
   justify-content: space-between;
   position: fixed;
   top: 50%;
+  @media (max-width: ${size.tablet}) {
+    display: ${props => (props.hideInMobile ? "none" : "inherit")};
+  }
+`
+
+const BackgroundImg = styled(Img)`
+  min-width: 100%;
+  min-height: 100%;
+  display: none;
+  z-index: ${levels.background};
+  position: fixed !important;
+
+  @media (max-width: ${size.tablet}) {
+    display: ${props => (props.showInMobile ? "inherit" : "none")};
+  }
 `
 
 class Background extends React.Component {
@@ -124,7 +140,8 @@ class Background extends React.Component {
 
   render() {
     return (
-      <BackgroundWrapper hideInMobile={this.props.hideInMobile}>
+      <BackgroundWrapper>
+        <BackgroundImg showInMobile={true} fluid={this.props.background_images[0].fluid} />
         <VideoWrapper
           hideInMobile={this.props.hideInMobile}
           onEnded={() => this.nextVideo()}
@@ -139,7 +156,8 @@ class Background extends React.Component {
             type="video/mp4"
           ></source>
         </VideoWrapper>
-        <VideoNavigation>
+        <VideoNavigation
+        hideInMobile={this.props.hideInMobile}>
           <NavigationButton
             icon={faChevronLeft}
             onClick={() => this.previousVideo()}
@@ -157,6 +175,7 @@ const mapStateToProps = state => {
   return {
     videos: state.videos,
     experience_transition: state.experience_transition,
+    background_images: state.background_images
   }
 }
 const mapDispatchToProps = dispatch => {

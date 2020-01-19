@@ -5,6 +5,7 @@ const initialState = {
   navbarLinks: [],
   mobileNavbarLinks: [],
   videos: [],
+  background_images: [],
   isLoaded: false,
   currentVideo: null,
   show_modal: false,
@@ -36,6 +37,10 @@ const reducer = (state = initialState, action) => {
     case actionTypes.SET_VIDEOS:
       return Object.assign({}, state, {
         videos: action.videos,
+      })
+    case actionTypes.SET_BACKGROUND_IMAGES:
+      return Object.assign({},  state, {
+        background_images: action.background_images
       })
     case actionTypes.SET_CURRENT_VIDEO:
       return Object.assign({}, state, {
