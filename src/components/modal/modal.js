@@ -14,6 +14,7 @@ const ModalWrapper = styled.div`
   height: 100vh;
   grid-template-rows: [row1-start] 15%;
   grid-template-columns: 1fr;
+  padding: 0 1.3rem;
   @media (max-width: ${size.tablet}) {
     width: 100vw;
     left: 0;

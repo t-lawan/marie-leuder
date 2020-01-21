@@ -92,6 +92,7 @@ p{
   padding-right: 0;
   padding-top: 0;
   font-size: 1.15em;
+  line-height: 1.3;
 }
 li {
   list-style-type: lower-roman;

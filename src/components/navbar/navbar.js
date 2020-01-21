@@ -31,7 +31,9 @@ const NavbarTitle = styled.h2`
   color: white;
   z-index: ${levels.navbarText};
   :hover {
+    color: transparent;
     font-style: italic;
+    text-shadow: 0 0 5px black;
   }
 `
 
