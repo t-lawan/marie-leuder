@@ -14,6 +14,7 @@ const ModalWrapper = styled.div`
   height: 100vh;
   grid-template-rows: [row1-start] 15%;
   grid-template-columns: 1fr;
+  padding: 0 1.3rem;
   @media (max-width: ${size.tablet}) {
     width: 100vw;
     left: 0;
@@ -51,7 +52,7 @@ const ModalBody = styled.div`
   padding: 1rem;
   padding-top: ${props => (props.noOfColumns === 1 ? "0" : "2rem")};
   display: grid;
-  width: ${props => (props.noOfColumns === 1 ? "70%" : "100%")};
+  width: ${props => (props.noOfColumns === 1 ? "80%" : "100%")};
   grid-template-columns: ${props =>
     props.noOfColumns === 1 ? "1fr" : "5fr 4fr 1fr"};
   grid-column-gap: 1rem;
