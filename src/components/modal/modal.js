@@ -52,7 +52,7 @@ const ModalBody = styled.div`
   padding: 1rem;
   padding-top: ${props => (props.noOfColumns === 1 ? "0" : "2rem")};
   display: grid;
-  width: ${props => (props.noOfColumns === 1 ? "70%" : "100%")};
+  width: ${props => (props.noOfColumns === 1 ? "80%" : "100%")};
   grid-template-columns: ${props =>
     props.noOfColumns === 1 ? "1fr" : "5fr 4fr 1fr"};
   grid-column-gap: 1rem;

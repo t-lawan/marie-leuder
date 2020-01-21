@@ -68,9 +68,9 @@ const VideoNavigation = styled.div`
   position: fixed;
   top: 50%;
   padding: 0 0.5rem;
-  @media (max-width: ${size.tablet}) {
+  /* @media (max-width: ${size.tablet}) {
     display: ${props => (props.hideInMobile ? "none" : "inherit")};
-  }
+  } */
 `
 
 const BackgroundImg = styled(Img)`
@@ -144,9 +144,8 @@ class Background extends React.Component {
   render() {
     return (
       <BackgroundWrapper>
-        <BackgroundImg showInMobile={true} fluid={this.props.background_images[0].fluid} />
+        {/* <BackgroundImg showInMobile={true} fluid={this.props.background_images[0].fluid} /> */}
         <VideoWrapper
-          hideInMobile={this.props.hideInMobile}
           onEnded={() => this.nextVideo()}
           ref={this.videoRef}
           autoPlay
@@ -161,7 +160,7 @@ class Background extends React.Component {
           ></source>
         </VideoWrapper>
         <VideoNavigation
-        hideInMobile={this.props.hideInMobile}>
+       >
           <NavigationButton
             icon={faChevronLeft}
             onClick={() => this.previousVideo()}
