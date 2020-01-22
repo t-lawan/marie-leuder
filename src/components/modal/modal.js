@@ -30,6 +30,7 @@ const ModalWrapper = styled.div`
 
 const Hamburger = styled(HamburgerElasticReverse)`
   padding: 0.1rem;
+  justify-self: end;
 `
 const ModalHeaderWrapper = styled.div`
   padding: 1rem;
@@ -41,22 +42,33 @@ const ModalHeader = styled.div`
   display: flex;
   flex-grow: 1;
   padding: 1rem;
+  padding-bottom: 0.5rem;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
   grid-area: header;
   display: ${props => (props.show ? "flex" : "none")};
+  position: sticky;
+  background: white;
+  top: 0;
+  z-index: ${levels.modalText};
 `
 
 const ModalBody = styled.div`
   padding: 1rem;
   padding-top: ${props => (props.noOfColumns === 1 ? "0" : "2rem")};
   display: grid;
-  width: ${props => (props.noOfColumns === 1 ? "80%" : "100%")};
+  width: ${props => (props.noOfColumns === 1 ? "56%" : "100%")};
   grid-template-columns: ${props =>
     props.noOfColumns === 1 ? "1fr" : "5fr 4fr 1fr"};
+
+  @media (max-width: ${size.tablet}) {
+    grid-template-columns: ${props =>
+    props.noOfColumns === 1 ? "inherit" : "9fr 1fr"};
+  }
   grid-column-gap: 1rem;
   align-items: flex-start;
+  justify-items: flex-start;
 `
 
 const ModalTitle = styled.h2`
@@ -79,14 +91,14 @@ class Modal extends React.Component {
         noOfColumns={this.props.noOfColumns}
       >
         {/* <ModalHeaderWrapper show={this.props.noOfColumns === 1}> */}
-          <ModalHeader show={this.props.noOfColumns === 1}>
-            <ModalTitle>{this.props.title.toUpperCase()} </ModalTitle>
-            <Hamburger
-              onClick={() => this.props.hideModal()}
-              isActive={this.props.show_modal}
-              barColor="black"
-            />
-          </ModalHeader>
+        <ModalHeader show={this.props.noOfColumns === 1}>
+          <ModalTitle>{this.props.title.toUpperCase()} </ModalTitle>
+          <Hamburger
+            onClick={() => this.props.hideModal()}
+            isActive={this.props.show_modal}
+            barColor="black"
+          />
+        </ModalHeader>
         {/* </ModalHeaderWrapper> */}
 
         <ModalBody noOfColumns={this.props.noOfColumns}>

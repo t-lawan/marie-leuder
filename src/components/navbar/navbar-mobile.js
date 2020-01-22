@@ -30,7 +30,7 @@ const NavbarHeaderMobile = styled.nav`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   z-index: ${levels.navbar};
 `
 
@@ -72,7 +72,7 @@ const mapDispatchToProps = dispatch => {
         component: component,
         title: title,
         left: true,
-        noOfColumns: 1
+        noOfColumns: 2
       }),
   }
 }

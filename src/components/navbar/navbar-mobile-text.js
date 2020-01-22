@@ -10,6 +10,10 @@ const Link = styled.h2`
         cursor: pointer;
     }
 `
+
+const NavLinksContainer = styled.div`
+
+`
 class NavbarMobileText extends React.Component {
     selectPage = (pageId) => {
         let page = this.props.pages.find((pg) => {
@@ -22,11 +26,11 @@ class NavbarMobileText extends React.Component {
     }
     render() {
         return (
-            <>
+            <NavLinksContainer>
                 {this.props.navbarLinks.map((link ) => (
                     <Link key={link.id} onClick={() => this.selectPage(link.page_id)}> {link.title.toUpperCase()} </Link>
                 ))}
-            </>
+            </NavLinksContainer>
         )
     }
 }
