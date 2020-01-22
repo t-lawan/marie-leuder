@@ -106,6 +106,7 @@ class Modal extends React.Component {
               onClick={() => this.props.hideModal()}
               isActive={this.props.show_modal}
               barColor="black"
+              buttonWidth={30}
             />
           ) : null}
         </ModalBody>
