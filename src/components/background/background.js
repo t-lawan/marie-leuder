@@ -56,6 +56,7 @@ const NavigationButton = styled(FontAwesomeIcon)`
   -webkit-transform-style: preserve-3d;
   font-size: 2rem !important;
   color: white;
+  z-index: ${levels.navbar};
 `
 
 const VideoNavigation = styled.div`
