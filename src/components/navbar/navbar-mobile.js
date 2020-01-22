@@ -11,6 +11,7 @@ const NavbarMobileWrapper = styled.div`
   display: none;
   padding: 1rem;
   z-index: ${levels.navbar};
+  -webkit-transform-style: preserve-3d;
 
   @media (max-width: ${size.tablet}) {
     display: ${props => (props.showInMobile ? "inherit" : "none")};
