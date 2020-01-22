@@ -9,7 +9,7 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons"
 import "@fortawesome/fontawesome-svg-core/styles.css"
-import Img from 'gatsby-image';
+// import Img from 'gatsby-image';
 const VideoWrapper = styled.video`
   position: fixed;
   top: 50%;
@@ -35,8 +35,8 @@ const VideoWrapper = styled.video`
     100% {
       opacity: 1;
       transform: translateY(-50%, -50%);
-    } */
-  }
+    } 
+  } */
 `
 
 const BackgroundWrapper = styled.div`
@@ -75,18 +75,18 @@ const VideoNavigation = styled.div`
   } */
 `
 
-const BackgroundImg = styled(Img)`
-  min-width: 100%;
-  min-height: 100%;
-  display: none;
-  z-index: ${levels.background};
-  position: fixed !important;
+// const BackgroundImg = styled(Img)`
+//   min-width: 100%;
+//   min-height: 100%;
+//   display: none;
+//   z-index: ${levels.background};
+//   position: fixed !important;
 
-  @media (max-width: ${size.tablet}) {
+//   @media (max-width: ${size.tablet}) {
 
-    display: ${props => (props.showInMobile ? "inherit" : "none")};
-  }
-`
+//     display: ${props => (props.showInMobile ? "inherit" : "none")};
+//   }
+// `
 
 class Background extends React.Component {
   videos
@@ -150,11 +150,17 @@ class Background extends React.Component {
         <VideoWrapper
           onEnded={() => this.nextVideo()}
           ref={this.videoRef}
-          autoPlay
+          // autoPlay
           muted
           loop
           playsInline={true}
           disablePictureInPicture={true}
+
+          onCanPlay={() => {
+            console.log(this.videoRef.current)
+
+            // this.videoRef.current.play();
+            }}
         >
           <source
             src={this.videos[this.state.index].url}

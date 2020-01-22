@@ -55,7 +55,7 @@ class Navbar extends React.Component {
     return (
       <>
         {pageIds.map((id, index) => (
-          <PageContent withParagraph={pageIds.length ==  1} withTitle={pageIds.length > 1} key={index} id={id} />
+          <PageContent withParagraph={pageIds.length ===  1} withTitle={pageIds.length > 1} key={index} id={id} />
         ))}
       </>
     )
