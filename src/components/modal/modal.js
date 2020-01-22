@@ -32,11 +32,7 @@ const Hamburger = styled(HamburgerElasticReverse)`
   padding: 0.1rem;
   justify-self: end;
 `
-const ModalHeaderWrapper = styled.div`
-  padding: 1rem;
-  display: ${props => (props.show ? "inherit" : "none")};
-  position: fixed;
-`
+
 const ModalHeader = styled.div`
   align-content: flex-start;
   display: flex;
@@ -97,6 +93,7 @@ class Modal extends React.Component {
             onClick={() => this.props.hideModal()}
             isActive={this.props.show_modal}
             barColor="black"
+            buttonWidth={30}
           />
         </ModalHeader>
         {/* </ModalHeaderWrapper> */}
