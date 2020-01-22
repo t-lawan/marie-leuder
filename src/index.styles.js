@@ -22,7 +22,7 @@ body {
   width: 100vw;
   width: 100%;
   height: 100%;
-  margin: 0 auto;
+  margin: 0 0;
   font-style: normal; 
   font-family: 'Arimo', sans-serif;
   background: black; 

@@ -10,6 +10,7 @@ const NavbarWrapper = styled.div`
   padding: 1rem;
   z-index: ${levels.navbar};
   max-height: 100vh;
+  transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
   @media (max-width: ${size.tablet}) {
     display: ${props => (props.hideInMobile ? "none" : "inherit")};
