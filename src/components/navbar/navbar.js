@@ -10,6 +10,7 @@ const NavbarWrapper = styled.div`
   padding: 1rem;
   z-index: ${levels.navbar};
   max-height: 100vh;
+  -webkit-transform-style: preserve-3d;
   @media (max-width: ${size.tablet}) {
     display: ${props => (props.hideInMobile ? "none" : "inherit")};
   }
@@ -34,7 +35,7 @@ const NavbarTitle = styled.h2`
     color: transparent;
     cursor: pointer;
     font-style: italic;
-    text-shadow: 0 0 5px black;
+    text-shadow: 0 0 5px grey;
   }
 `
 

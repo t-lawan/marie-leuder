@@ -18,13 +18,15 @@ const VideoWrapper = styled.video`
   min-height: 100%;
   width: auto;
   height: auto;
+  -o-object-fit: cover;
+	   object-fit: cover;
   z-index: ${levels.background};
   transform: translate(-50%, -50%);
-  animation-name: fadeIn;
-  animation-duration: 1s;
   @media (max-width: ${size.tablet}) {
     display: ${props => (props.hideInMobile ? "none" : "inherit")};
   }
+  /* animation-name: fadeIn;
+  animation-duration: 1s;
   @keyframes fadeIn {
     0% {
       opacity: 0;
@@ -33,7 +35,7 @@ const VideoWrapper = styled.video`
     100% {
       opacity: 1;
       transform: translateY(-50%, -50%);
-    }
+    } */
   }
 `
 
