@@ -9,7 +9,7 @@ import { HamburgerElasticReverse } from 'react-animated-burgers'
 import NavbarMobileText from "./navbar-mobile-text";
 const NavbarMobileWrapper = styled.div`
   display: none;
-  padding: 1rem;
+  padding: 1rem 1.5rem;
   z-index: ${levels.navbar};
   -webkit-transform-style: preserve-3d;
 
