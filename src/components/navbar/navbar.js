@@ -34,7 +34,6 @@ const NavbarTitle = styled.h2`
   :hover {
     color: transparent;
     cursor: pointer;
-    font-style: italic;
     text-shadow: 0 0 5px grey;
   }
 `
