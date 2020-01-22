@@ -51,7 +51,9 @@ const BackgroundWrapper = styled.div`
 const NavigationButton = styled(FontAwesomeIcon)`
   :hover {
     cursor: pointer;
-  }
+  }  
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
   font-size: 2rem !important;
   color: white;
 `
@@ -65,6 +67,8 @@ const VideoNavigation = styled.div`
   height: auto; */
   color: white;
   display: flex;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
   flex-direction: row;
   justify-content: space-between;
   position: fixed;

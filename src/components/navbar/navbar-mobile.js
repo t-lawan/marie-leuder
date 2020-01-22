@@ -11,6 +11,7 @@ const NavbarMobileWrapper = styled.div`
   display: none;
   padding: 1rem 1.5rem;
   z-index: ${levels.navbar};
+  transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
 
   @media (max-width: ${size.tablet}) {
