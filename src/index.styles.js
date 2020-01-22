@@ -91,7 +91,7 @@ p{
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  font-size: 1.15em;
+  font-size: 1em;
   line-height: 1.3;
 }
 li {
@@ -104,6 +104,7 @@ export const levels = {
   navbar: 10,
   navbarText: 10,
   modal: 1000,
+  modalText: 1010,
 }
 export const size = {
   mobileS: "320px",

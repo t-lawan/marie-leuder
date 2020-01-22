@@ -69,7 +69,7 @@ const VideoNavigation = styled.div`
   justify-content: space-between;
   position: fixed;
   top: 50%;
-  padding: 0 0.5rem;
+  padding: 0 1.5rem;
   /* @media (max-width: ${size.tablet}) {
     display: ${props => (props.hideInMobile ? "none" : "inherit")};
   } */
