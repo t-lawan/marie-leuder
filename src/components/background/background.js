@@ -122,9 +122,9 @@ class Background extends React.Component {
         index: this.state.index + 1,
       })
 
-      // setTimeout(() => {
-      //   this.props.setIsVisibleToTrue()
-      // }, this.visibleTransitionTime)
+      setTimeout(() => {
+        this.props.setIsVisibleToTrue()
+      }, this.visibleTransitionTime)
 
       this.videoRef.current.load()
     }
@@ -142,9 +142,10 @@ class Background extends React.Component {
       })
     }
 
-    // setTimeout(() => {
-    //   this.props.setIsVisibleToTrue()
-    // }, this.visibleTransitionTime)
+    setTimeout(() => {
+      this.props.setIsVisibleToTrue()
+    }, this.visibleTransitionTime)
+    
     this.videoRef.current.load()
   }
 
@@ -155,17 +156,11 @@ class Background extends React.Component {
         <VideoWrapper
           onEnded={() => this.nextVideo()}
           ref={this.videoRef}
-          // autoPlay
+          autoPlay
           muted
           loop
           playsInline={true}
           disablePictureInPicture={true}
-
-          onCanPlay={() => {
-            console.log(this.videoRef.current)
-
-            // this.videoRef.current.play();
-            }}
         >
           <source
             src={this.videos[this.state.index].url}
