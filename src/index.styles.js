@@ -100,9 +100,9 @@ li {
 `
 export const levels = {
   background: 0,
-  jumbotron: 5,
-  navbar: 10,
-  navbarText: 10,
+  jumbotron: 50,
+  navbar: 400,
+  navbarText: 500,
   modal: 1000,
   modalText: 1010,
 }
