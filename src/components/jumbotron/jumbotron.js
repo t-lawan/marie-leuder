@@ -16,7 +16,7 @@ const JumbotronWrapper = styled.section`
   }
 `
 const JumbotronImage = styled.img`
-  max-width: 40%;
+  max-width: 24%;
   display: block;
   margin: 0 auto;
   text-align: center;

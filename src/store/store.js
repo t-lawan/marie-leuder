@@ -13,6 +13,7 @@ const initialState = {
   modal_title: '',
   modal_position_left: true,
   modal_number_of_columns: 1,
+  modal_mobile_page_content: false,
   experience_transition: {
     animationIn: "slideInRight",
     animationOut: "slideOutLeft",

@@ -73,7 +73,7 @@ const mapDispatchToProps = dispatch => {
         component: component,
         title: title,
         left: true,
-        noOfColumns: 2
+        noOfColumns: 1
       }),
   }
 }
