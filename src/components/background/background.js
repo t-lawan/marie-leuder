@@ -9,6 +9,7 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons"
 import "@fortawesome/fontawesome-svg-core/styles.css"
+import { shuffle } from "../../utils/shuffle";
 // import Img from 'gatsby-image';
 const VideoWrapper = styled.video`
   position: fixed;
@@ -104,7 +105,7 @@ class Background extends React.Component {
     this.state = {
       index: 0,
     }
-    this.videos = this.props.videos
+    this.videos = shuffle(this.props.videos);
   }
 
   componentDidMount() {
