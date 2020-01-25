@@ -9,6 +9,7 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons"
 import "@fortawesome/fontawesome-svg-core/styles.css"
+import { shuffle } from "../../utils/shuffle";
 // import Img from 'gatsby-image';
 const VideoWrapper = styled.video`
   position: fixed;
@@ -74,7 +75,7 @@ const VideoNavigation = styled.div`
   justify-content: space-between;
   position: fixed;
   top: 50%;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
   /* @media (max-width: ${size.tablet}) {
     display: ${props => (props.hideInMobile ? "none" : "inherit")};
   } */
@@ -104,7 +105,7 @@ class Background extends React.Component {
     this.state = {
       index: 0,
     }
-    this.videos = this.props.videos
+    this.videos = shuffle(this.props.videos);
   }
 
   componentDidMount() {
@@ -167,17 +168,6 @@ class Background extends React.Component {
             type="video/mp4"
           ></source>
         </VideoWrapper>
-        <VideoNavigation
-       >
-          <NavigationButton
-            icon={faChevronLeft}
-            onClick={() => this.previousVideo()}
-          />
-          <NavigationButton
-            icon={faChevronRight}
-            onClick={() => this.nextVideo()}
-          />
-        </VideoNavigation>
       </BackgroundWrapper>
     )
   }
