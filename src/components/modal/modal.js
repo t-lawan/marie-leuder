@@ -61,6 +61,7 @@ const ModalBody = styled.div`
   @media (max-width: ${size.tablet}) {
     grid-template-columns: ${props =>
     props.noOfColumns === 1 ? "inherit" : "9fr 1fr"};
+    width: 75%;
   }
   grid-column-gap: 1rem;
   align-items: flex-start;

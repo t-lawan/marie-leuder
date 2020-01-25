@@ -10,14 +10,24 @@ const PageContentWrapper = styled.section`
   z-index: ${levels.navbar};
 `
 
+const PageTitle = styled.h2`
+
+`
+
+const PageTitleContainer = styled.div`
+  background: white;
+`
+
 const PageContent = props => {
     let id = props.id;
     let page = props.pages.find((pg) => {
       return pg.id === id;
     })
     return (
-        <PageContentWrapper >
-          <h2 hidden={!props.withTitle}> {page.title.toUpperCase()}</h2>
+        <PageContentWrapper>
+          <PageTitleContainer hidden={!props.withTitle}>
+            <PageTitle> {page.title.toUpperCase()}</PageTitle>
+          </PageTitleContainer>
           <p hidden={!props.withParagraph}> {page.title.toUpperCase()}</p>
           {documentToReactComponents(page.content.json, richTextOptions)}
         </PageContentWrapper>

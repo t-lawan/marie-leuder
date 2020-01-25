@@ -74,7 +74,7 @@ const VideoNavigation = styled.div`
   justify-content: space-between;
   position: fixed;
   top: 50%;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
   /* @media (max-width: ${size.tablet}) {
     display: ${props => (props.hideInMobile ? "none" : "inherit")};
   } */
@@ -167,17 +167,6 @@ class Background extends React.Component {
             type="video/mp4"
           ></source>
         </VideoWrapper>
-        <VideoNavigation
-       >
-          <NavigationButton
-            icon={faChevronLeft}
-            onClick={() => this.previousVideo()}
-          />
-          <NavigationButton
-            icon={faChevronRight}
-            onClick={() => this.nextVideo()}
-          />
-        </VideoNavigation>
       </BackgroundWrapper>
     )
   }
