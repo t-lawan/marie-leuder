@@ -31,7 +31,7 @@ const NavbarHeaderMobile = styled.nav`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: baseline;
   z-index: ${levels.navbar};
 `
 
