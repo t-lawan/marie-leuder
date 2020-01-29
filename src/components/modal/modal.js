@@ -14,7 +14,7 @@ const ModalWrapper = styled.div`
   height: 100vh;
   grid-template-rows: [row1-start] 15%;
   grid-template-columns: 1fr;
-  padding: 0 1.3rem;
+  padding: 0 1.2rem;
   @media (max-width: ${size.tablet}) {
     width: 100vw;
     left: 0;
@@ -37,7 +37,7 @@ const ModalHeader = styled.div`
   align-content: flex-start;
   display: flex;
   flex-grow: 1;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 1rem;
   padding-bottom: 0.5rem;
   flex-direction: row;
   justify-content: space-between;
@@ -60,7 +60,7 @@ const ModalBody = styled.div`
 
   @media (max-width: ${size.tablet}) {
     grid-template-columns: ${props =>
-    props.noOfColumns === 1 ? "9fr 1fr" : "9fr 1fr"};
+    props.noOfColumns === 1 ? "10fr 1fr" : "11fr 1fr"};
     width: 85%;
   }
   grid-column-gap: 1rem;
