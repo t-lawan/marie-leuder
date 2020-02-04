@@ -12,7 +12,7 @@ const ModalWrapper = styled.div`
   width: 50vw;
   left: ${props => (props.left ? '0%' : "50%")};
   height: 100vh;
-  grid-template-rows: [row1-start] 15%;
+  grid-template-rows: [row1-start] 10%;
   grid-template-columns: 1fr;
   /* padding: 0 1.2rem; */
   @media (max-width: ${size.tablet}) {
