@@ -10,12 +10,21 @@ const PageContentWrapper = styled.section`
   z-index: ${levels.navbar};
 `
 
-const PageTitle = styled.h2`
+const PageText = styled.div`
+  margin-top: ${props => props.margin ? "5rem" : "0"};
+  /* position: relative; */
+`
 
+const PageTitle = styled.h2`
 `
 
 const PageTitleContainer = styled.div`
   background: white;
+  display: ${props => props.show ? "block" : "none"};
+  top: 0;
+  position: fixed;
+  padding-top: 1rem;
+  width: inherit;
 `
 
 const PageContent = props => {
@@ -25,11 +34,13 @@ const PageContent = props => {
     })
     return (
         <PageContentWrapper>
-          <PageTitleContainer hidden={!props.withTitle}>
+          <PageTitleContainer show={props.withTitle}>
             <PageTitle> {page.title.toUpperCase()}</PageTitle>
           </PageTitleContainer>
           <p hidden={!props.withParagraph}> {page.title.toUpperCase()}</p>
-          {documentToReactComponents(page.content.json, richTextOptions)}
+          <PageText margin={props.withTitle}>
+            {documentToReactComponents(page.content.json, richTextOptions)}
+          </PageText>
         </PageContentWrapper>
     )
 }
