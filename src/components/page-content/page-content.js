@@ -19,7 +19,6 @@ const PageTitle = styled.h2`
 `
 
 const PageTitleContainer = styled.div`
-  background: white;
   display: ${props => props.show ? "block" : "none"};
   top: 0;
   position: fixed;

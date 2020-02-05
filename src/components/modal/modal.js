@@ -31,6 +31,8 @@ const ModalWrapper = styled.div`
 const Hamburger = styled(HamburgerElasticReverse)`
   padding: 0.1rem;
   justify-self: end;
+  /* top: 0; */
+  /* position: fixed; */
 `
 
 const ModalHeader = styled.div`

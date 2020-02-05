@@ -9,7 +9,7 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons"
 import "@fortawesome/fontawesome-svg-core/styles.css"
-import { shuffle } from "../../utils/shuffle";
+import { shuffle } from "../../utils/shuffle"
 // import Img from 'gatsby-image';
 const VideoWrapper = styled.video`
   position: fixed;
@@ -20,7 +20,7 @@ const VideoWrapper = styled.video`
   width: auto;
   height: auto;
   -o-object-fit: cover;
-	   object-fit: cover;
+  object-fit: cover;
   z-index: ${levels.background};
   transform: translate(-50%, -50%);
   @media (max-width: ${size.tablet}) {
@@ -44,7 +44,7 @@ const BackgroundWrapper = styled.div`
   margin: 0;
   padding: 0;
   @media (max-width: ${size.tablet}) {
-  background: black;
+    background: black;
     display: ${props => (props.hideInMobile ? "none" : "inherit")};
   }
 `
@@ -52,7 +52,7 @@ const BackgroundWrapper = styled.div`
 const NavigationButton = styled(FontAwesomeIcon)`
   :hover {
     cursor: pointer;
-  }  
+  }
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
   font-size: 2rem !important;
@@ -105,7 +105,7 @@ class Background extends React.Component {
     this.state = {
       index: 0,
     }
-    this.videos = shuffle(this.props.videos);
+    this.videos = shuffle(this.props.videos)
   }
 
   componentDidMount() {
@@ -146,13 +146,13 @@ class Background extends React.Component {
     setTimeout(() => {
       this.props.setIsVisibleToTrue()
     }, this.visibleTransitionTime)
-    
+
     this.videoRef.current.load()
   }
 
   render() {
     return (
-      <BackgroundWrapper>
+      <BackgroundWrapper onClick={() => this.props.hideModal()}>
         {/* <BackgroundImg showInMobile={true} fluid={this.props.background_images[0].fluid} /> */}
         <VideoWrapper
           onEnded={() => this.nextVideo()}
@@ -176,7 +176,7 @@ const mapStateToProps = state => {
   return {
     videos: state.videos,
     experience_transition: state.experience_transition,
-    background_images: state.background_images
+    background_images: state.background_images,
   }
 }
 const mapDispatchToProps = dispatch => {
@@ -190,6 +190,10 @@ const mapDispatchToProps = dispatch => {
     slideRight: () => dispatch({ type: ActionTypes.SLIDE_RIGHT_TRANSITION }),
     setIsVisibleToTrue: () =>
       dispatch({ type: ActionTypes.SET_IS_VISIBLE_TO_TRUE }),
+    hideModal: () =>
+      dispatch({
+        type: ActionTypes.HIDE_MODAL,
+      }),
   }
 }
 

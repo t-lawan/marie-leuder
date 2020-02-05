@@ -2,6 +2,9 @@ import React from "react"
 import WhiteLogo from "../assets/LUEDER-LOGO-WHITE.svg"
 import styled from "styled-components"
 import { levels, size } from "../../index.styles"
+import { connect } from "react-redux"
+import * as ActionTypes from '../../store/action';
+
 const JumbotronWrapper = styled.section`
   z-index: ${levels.jumbotron};
   position: fixed;
@@ -23,10 +26,18 @@ const JumbotronImage = styled.img`
 `
 const Jumbotron = props => {
   return (
-    <JumbotronWrapper hideInMobile={props.hideInMobile}>
+    <JumbotronWrapper onClick={() => props.hideModal()} hideInMobile={props.hideInMobile}>
       <JumbotronImage src={WhiteLogo} />
     </JumbotronWrapper>
   )
 }
+const mapDispatchToProps = dispatch => {
+  return {
+    hideModal: () =>
+      dispatch({
+        type: ActionTypes.HIDE_MODAL,
+      }),
+  }
+}
 
-export default Jumbotron
+export default connect(null, mapDispatchToProps)(Jumbotron)
