@@ -70,6 +70,13 @@ const ModalBody = styled.div`
   justify-items: flex-start;
 `
 
+const ModalTitleContainer = styled.div`
+width: 100%;
+display: grid;
+  grid-template-columns: ${props =>
+    props.noOfColumns === 1 ? "1fr" : "5fr 4fr"};
+`
+
 const ModalTitle = styled.h2`
   padding: 1rem;
   padding-left: 0;
@@ -90,8 +97,12 @@ class Modal extends React.Component {
         noOfColumns={this.props.noOfColumns}
       >
         {/* <ModalHeaderWrapper show={this.props.noOfColumns === 1}> */}
-        <ModalHeader show={this.props.noOfColumns === 1}>
-          <ModalTitle>{this.props.title.toUpperCase()} </ModalTitle>
+        <ModalHeader show={true}>
+          <ModalTitleContainer noOfColumns={this.props.title.length}>
+            {this.props.title.map((tit, index) => (
+              <ModalTitle key={index}>{tit.toUpperCase()} </ModalTitle>
+            ))}
+          </ModalTitleContainer>
           <Hamburger
             onClick={() => this.props.hideModal()}
             isActive={this.props.show_modal}
@@ -103,7 +114,7 @@ class Modal extends React.Component {
 
         <ModalBody noOfColumns={this.props.noOfColumns}>
           {this.props.component ? this.props.component : ""}
-          {this.props.noOfColumns > 1 ? (
+          {/* {this.props.noOfColumns > 1 ? (
             <Hamburger
               hidden={this.props.noOfColumns < 2}
               onClick={() => this.props.hideModal()}
@@ -111,7 +122,7 @@ class Modal extends React.Component {
               barColor="black"
               buttonWidth={30}
             />
-          ) : null}
+          ) : null} */}
         </ModalBody>
       </ModalWrapper>
     )
@@ -120,7 +131,7 @@ class Modal extends React.Component {
 
 Modal.propTypes = {
   element: PropTypes.element,
-  title: PropTypes.string,
+  // title: PropTypes.string,
 }
 
 const mapDispatchToProps = dispatch => {
