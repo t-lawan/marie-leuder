@@ -62,6 +62,17 @@ class Navbar extends React.Component {
     )
   }
 
+  generateTitles(pageIds) {
+    let pages = this.props.pages;
+    pages = pages.filter((pg, index) => {
+      return pageIds.includes(pg.id);
+    })
+
+    return pages.map((pg, index) => {
+      return pg.title
+    });
+  }
+
   hideAllLinks = () => {
     this.links.forEach(link => {
       this.setState({
@@ -88,7 +99,7 @@ class Navbar extends React.Component {
           <NavbarRow>
             {this.links.map((link, index) => (
               <NavbarTitleContainer key={index}>
-                <NavbarTitle onClick={() => this.props.showModal(this.generatePages(link.page_ids) , link.title, index === 0 ? true : false, link.page_ids.length)}>
+                <NavbarTitle onClick={() => this.props.showModal(this.generatePages(link.page_ids) , this.generateTitles(link.page_ids), index === 0 ? true : false, link.page_ids.length)}>
                   {" "}
                   {link.title.toUpperCase()}{" "}
                 </NavbarTitle>

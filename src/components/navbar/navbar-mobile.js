@@ -49,7 +49,7 @@ class NavbarMobile extends React.Component {
         <NavbarHeaderMobile>
           <NavbarMobileLogo src={Logo} />
           <HamburgerElasticReverse
-            onClick={() => this.props.showModal(<NavbarMobileText />, '')}
+            onClick={() => this.props.showModal(<NavbarMobileText />, [''])}
             isActive={this.props.show_modal}
             barColor="white"
           />
