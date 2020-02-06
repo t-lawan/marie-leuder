@@ -11,7 +11,6 @@ const PageContentWrapper = styled.section`
 `
 
 const PageText = styled.div`
-  margin-top: ${props => props.margin ? "5rem" : "0"};
   /* position: relative; */
 `
 
@@ -33,11 +32,8 @@ const PageContent = props => {
     })
     return (
         <PageContentWrapper>
-          <PageTitleContainer show={props.withTitle}>
-            <PageTitle> {page.title.toUpperCase()}</PageTitle>
-          </PageTitleContainer>
           <p hidden={!props.withParagraph}> {page.title.toUpperCase()}</p>
-          <PageText margin={props.withTitle}>
+          <PageText>
             {documentToReactComponents(page.content.json, richTextOptions)}
           </PageText>
         </PageContentWrapper>

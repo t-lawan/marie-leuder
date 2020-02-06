@@ -10,7 +10,7 @@ const initialState = {
   currentVideo: null,
   show_modal: false,
   modal_component: null,
-  modal_title: '',
+  modal_title: [],
   modal_position_left: true,
   modal_number_of_columns: 1,
   modal_mobile_page_content: false,
@@ -59,7 +59,7 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         show_modal: false,
         modal_component: null,
-        modal_title: ''
+        modal_title: ['']
       })
     case actionTypes.SET_MOBILE_NAVBAR_LINKS: 
       return Object.assign({}, state, {
