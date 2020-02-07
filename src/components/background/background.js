@@ -102,10 +102,12 @@ class Background extends React.Component {
   constructor(props) {
     super(props)
 
+    let randomNumber = Math.floor(Math.random() * this.props.videos.length) 
+
     this.state = {
-      index: 0,
+      index: randomNumber,
     }
-    this.videos = shuffle(this.props.videos)
+    this.videos = this.props.videos;
   }
 
   componentDidMount() {
