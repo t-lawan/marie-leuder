@@ -19,6 +19,7 @@ const ModalWrapper = styled.div`
     width: 100vw;
     left: 0;
   }
+  overflow-x: hidden;
   position: fixed;
   z-index: ${levels.modal};
   background: white;
