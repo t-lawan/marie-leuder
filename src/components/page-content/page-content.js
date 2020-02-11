@@ -26,7 +26,7 @@ const PageTitleContainer = styled.div`
 `
 
 const PageContentTitle = styled.p`
-  /* padding-top: 1rem; */
+  padding-top: 0.8rem;
 `
 
 const PageContent = props => {
