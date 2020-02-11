@@ -25,6 +25,10 @@ const PageTitleContainer = styled.div`
   width: inherit;
 `
 
+const PageContentTitle = styled.p`
+  /* padding-top: 1rem; */
+`
+
 const PageContent = props => {
     let id = props.id;
     let page = props.pages.find((pg) => {
@@ -32,7 +36,7 @@ const PageContent = props => {
     })
     return (
         <PageContentWrapper>
-          <p hidden={!props.withParagraph}> {page.title.toUpperCase()}</p>
+          <PageContentTitle hidden={!props.withParagraph}> {page.title.toUpperCase()}</PageContentTitle>
           <PageText>
             {documentToReactComponents(page.content.json, richTextOptions)}
           </PageText>

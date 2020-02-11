@@ -101,17 +101,15 @@ class Background extends React.Component {
   visibleTransitionTime = 5000
   constructor(props) {
     super(props)
-
-    let randomNumber = Math.floor(Math.random() * this.props.videos.length) 
-
-    this.state = {
-      index: randomNumber,
-    }
-    this.videos = this.props.videos;
+    this.videoRef = React.createRef()
   }
 
   componentDidMount() {
-    this.videoRef = React.createRef()
+    let randomNumber = Math.floor(Math.random() * this.props.videos.length) 
+    this.videos = this.props.videos;
+    this.setState({
+      index: randomNumber
+    });
   }
 
   nextVideo = () => {
@@ -156,7 +154,7 @@ class Background extends React.Component {
     return (
       <BackgroundWrapper onClick={() => this.props.hideModal()}>
         {/* <BackgroundImg showInMobile={true} fluid={this.props.background_images[0].fluid} /> */}
-        <VideoWrapper
+        {this.videos ? <VideoWrapper
           onEnded={() => this.nextVideo()}
           ref={this.videoRef}
           autoPlay
@@ -169,7 +167,7 @@ class Background extends React.Component {
             src={this.videos[this.state.index].url}
             type="video/mp4"
           ></source>
-        </VideoWrapper>
+        </VideoWrapper> : null}
       </BackgroundWrapper>
     )
   }
