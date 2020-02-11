@@ -68,7 +68,7 @@ const ModalBody = styled.div`
   display: grid;
   width: ${props => (props.noOfColumns === 1 ? "56%" : "100%")};
   grid-template-columns: ${props =>
-    props.noOfColumns === 1 ? "1fr" : "5fr 4fr 0.5fr"};
+    props.noOfColumns === 1 ? "1fr" : "5fr 5fr 0.5fr"};
 
   @media (max-width: ${size.tablet}) {
     grid-template-columns: ${props =>
@@ -85,7 +85,7 @@ const ModalTitleContainer = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: ${props =>
-    props.noOfColumns === 1 ? "1fr" : "5fr 4fr"};
+    props.noOfColumns === 1 ? "1fr" : "9fr 9fr"};
 `
 
 const ModalTitle = styled.h2`

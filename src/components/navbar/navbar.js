@@ -99,7 +99,7 @@ class Navbar extends React.Component {
           <NavbarRow>
             {this.links.map((link, index) => (
               <NavbarTitleContainer key={index}>
-                <NavbarTitle onClick={() => this.props.showModal(this.generatePages(link.page_ids) , this.generateTitles(link.page_ids), index === 0 ? true : false, link.page_ids.length)}>
+                <NavbarTitle onClick={() => this.props.showModal(this.generatePages(link.page_ids) , link.page_ids.length > 1 ?  this.generateTitles(link.page_ids) : [link.title], index === 0 ? true : false, link.page_ids.length)}>
                   {" "}
                   {link.title.toUpperCase()}{" "}
                 </NavbarTitle>
