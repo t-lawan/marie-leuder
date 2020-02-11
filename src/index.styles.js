@@ -58,7 +58,7 @@ h3 {
   line-height: 1.1;
 }
 h4 {
-  margin-bottom: 1.45rem;
+  margin-bottom: 0.5rem;
   font-size: 1rem;
   line-height: 1.1;
 }
