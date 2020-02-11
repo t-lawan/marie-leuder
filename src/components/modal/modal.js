@@ -10,7 +10,7 @@ const ModalWrapper = styled.div`
   display: ${props => (props.show ? "grid" : "none")};
   top: 0;
   width: 50vw;
-  left: ${props => (props.left ? '0%' : "50%")};
+  left: ${props => (props.left ? "0%" : "50%")};
   height: 100vh;
   grid-template-rows: [row1-start] 10%;
   grid-template-columns: 1fr;
@@ -19,14 +19,13 @@ const ModalWrapper = styled.div`
     width: 100vw;
     left: 0;
   }
+  /* padding-left: 1rem; */
   overflow-x: hidden;
   position: fixed;
   z-index: ${levels.modal};
   background: white;
   overflow-y: scroll;
-  grid-template-areas:
-    "header header"
-    "main main";
+  grid-template-areas: "header header" "main main";
 `
 
 const Hamburger = styled(HamburgerElasticReverse)`
@@ -40,40 +39,51 @@ const ModalHeader = styled.div`
   align-content: flex-start;
   display: flex;
   flex-grow: 1;
-  padding: 0.5rem 1rem;
-  padding-bottom: 0.5rem;
+  padding: 1rem;
+  padding-bottom: 0rem;
   flex-direction: row;
   justify-content: space-between;
   align-items: baseline;
   grid-area: header;
   display: ${props => (props.show ? "flex" : "none")};
-  position: sticky;
+  /* position: sticky; */
   background: white;
   top: 0;
   z-index: ${levels.modalText};
 `
+const FixedHeader = styled.div`
+  position: fixed;
+  /* width: 50%; */
+  width: inherit;
+  background: white;
+  z-index: ${levels.modalText};
+  @media (max-width: ${size.tablet}) {
 
+    width: 100%;
+  }
+`
 const ModalBody = styled.div`
   padding: 1rem;
   padding-top: ${props => (props.noOfColumns === 1 ? "1rem" : "2rem")};
   display: grid;
   width: ${props => (props.noOfColumns === 1 ? "56%" : "100%")};
   grid-template-columns: ${props =>
-    props.noOfColumns === 1 ? "1fr" : "5fr 4fr 1fr"};
+    props.noOfColumns === 1 ? "1fr" : "5fr 4fr 0.5fr"};
 
   @media (max-width: ${size.tablet}) {
     grid-template-columns: ${props =>
-    props.noOfColumns === 1 ? "10fr 1fr" : "11fr 1fr"};
+      props.noOfColumns === 1 ? "10fr 1fr" : "11fr 1fr"};
     width: 85%;
   }
-  grid-column-gap: 1rem;
+  grid-column-gap: 1.7rem;
   align-items: flex-start;
   justify-items: flex-start;
+  margin-top: 5rem;
 `
 
 const ModalTitleContainer = styled.div`
-width: 100%;
-display: grid;
+  width: 100%;
+  display: grid;
   grid-template-columns: ${props =>
     props.noOfColumns === 1 ? "1fr" : "5fr 4fr"};
 `
@@ -98,19 +108,22 @@ class Modal extends React.Component {
         noOfColumns={this.props.noOfColumns}
       >
         {/* <ModalHeaderWrapper show={this.props.noOfColumns === 1}> */}
-        <ModalHeader show={true}>
-          <ModalTitleContainer noOfColumns={this.props.title.length}>
-            {this.props.title.map((tit, index) => (
-              <ModalTitle key={index}>{tit.toUpperCase()} </ModalTitle>
-            ))}
-          </ModalTitleContainer>
-          <Hamburger
-            onClick={() => this.props.hideModal()}
-            isActive={this.props.show_modal}
-            barColor="black"
-            buttonWidth={30}
-          />
-        </ModalHeader>
+        <FixedHeader>
+          <ModalHeader show={true}>
+            <ModalTitleContainer noOfColumns={this.props.title.length}>
+              {this.props.title.map((tit, index) => (
+                <ModalTitle key={index}>{tit.toUpperCase()} </ModalTitle>
+              ))}
+            </ModalTitleContainer>
+            <Hamburger
+              onClick={() => this.props.hideModal()}
+              isActive={this.props.show_modal}
+              barColor="black"
+              buttonWidth={30}
+            />
+          </ModalHeader>
+        </FixedHeader>
+
         {/* </ModalHeaderWrapper> */}
 
         <ModalBody noOfColumns={this.props.noOfColumns}>

@@ -58,7 +58,7 @@ h3 {
   line-height: 1.1;
 }
 h4 {
-  margin-bottom: 1.45rem;
+  margin-bottom: 0.5rem;
   font-size: 1rem;
   line-height: 1.1;
 }
@@ -91,7 +91,7 @@ p{
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  font-size: 1em;
+  font-size: 0.8em;
   line-height: 1.3;
 }
 li {
