@@ -91,7 +91,7 @@ p{
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  font-size: 0.8em;
+  font-size: 0.9em;
   line-height: 1.3;
 }
 li {
