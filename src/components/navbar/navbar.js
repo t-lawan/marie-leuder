@@ -68,6 +68,8 @@ class Navbar extends React.Component {
       return pageIds.includes(pg.id);
     })
 
+    console.log('PAGES', pages);
+
     return pages.map((pg, index) => {
       return pg.title
     });

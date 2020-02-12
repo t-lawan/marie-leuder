@@ -18,10 +18,6 @@ const State = props => {
               pages {
                 contentful_id
               }
-              page {
-                contentful_id
-                slug
-              }
             }
           }
         }

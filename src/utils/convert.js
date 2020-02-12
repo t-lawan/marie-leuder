@@ -12,7 +12,6 @@ export class Convert {
         return new NavLinkModel(
             contentfulModel.contentful_id,
             contentfulModel.title,
-            contentfulModel.page.contentful_id,
             pages,
             contentfulModel.order
         )
