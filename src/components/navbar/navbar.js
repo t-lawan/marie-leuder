@@ -66,9 +66,9 @@ class Navbar extends React.Component {
     let pages = this.props.pages;
     pages = pages.filter((pg, index) => {
       return pageIds.includes(pg.id);
+    }).sort((a, b) => {
+      return a.title.charCodeAt(0) - b.title.charCodeAt(0);
     })
-
-    console.log('PAGES', pages);
 
     return pages.map((pg, index) => {
       return pg.title
