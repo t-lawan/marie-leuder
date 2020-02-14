@@ -8,6 +8,7 @@ import { richTextOptions } from "../../utils/richtext";
 const PageContentWrapper = styled.section`
   /* padding: 1rem; */
   z-index: ${levels.navbar};
+  padding-bottom: 5rem;
 `
 
 const PageText = styled.div`
