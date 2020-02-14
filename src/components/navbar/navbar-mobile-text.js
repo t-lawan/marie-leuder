@@ -5,13 +5,15 @@ import * as ActionTypes from "../../store/action"
 import PageContent from "../page-content/page-content";
 
 const Link = styled.h2`
-    padding: 0.5rem;
+    padding: 0.1rem;
     :hover {
         cursor: pointer;
     }
 `
 
 const NavLinksContainer = styled.div`
+    z-index: 2000;
+    padding-top: 0.5rem;
 
 `
 class NavbarMobileText extends React.Component {

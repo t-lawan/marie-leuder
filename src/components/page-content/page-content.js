@@ -9,6 +9,7 @@ const PageContentWrapper = styled.section`
   /* padding: 1rem; */
   z-index: ${levels.navbar};
   padding-bottom: 5rem;
+  padding-top: ${props => props.isLong ? '7em' : '5rem'};
 `
 
 const PageText = styled.div`
@@ -35,8 +36,9 @@ const PageContent = props => {
     let page = props.pages.find((pg) => {
       return pg.id === id;
     })
+    console.log('PG', page.title.length)
     return (
-        <PageContentWrapper>
+        <PageContentWrapper isLong={page.title.length > 13}>
           <PageContentTitle hidden={!props.withParagraph}> {page.title.toUpperCase()}</PageContentTitle>
           <PageText>
             {documentToReactComponents(page.content.json, richTextOptions)}
