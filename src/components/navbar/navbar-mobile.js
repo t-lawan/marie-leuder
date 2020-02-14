@@ -25,13 +25,14 @@ const NavbarMobileWrapper = styled.div`
 
 const NavbarMobileLogo = styled.img`
   max-width: 40%;
+  margin-bottom: 0;
 `
 
 const NavbarHeaderMobile = styled.nav`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   z-index: ${levels.navbar};
 `
 
