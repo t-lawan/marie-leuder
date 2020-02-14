@@ -70,6 +70,7 @@ const ModalBody = styled.div`
   width: ${props => (props.noOfColumns === 1 ? "50%" : "100%")};
   grid-template-columns: ${props =>
     props.noOfColumns === 1 ? "1fr" : "5fr 5fr 0.5fr"};
+  /* margin-top: 5rem; */
 
   @media (max-width: ${size.tablet}) {
     grid-template-columns: ${props =>
@@ -79,7 +80,6 @@ const ModalBody = styled.div`
   grid-column-gap: 1.7rem;
   align-items: flex-start;
   justify-items: flex-start;
-  margin-top: 5rem;
 `
 
 const ModalTitleContainer = styled.div`
