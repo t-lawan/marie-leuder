@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `LUEDER`,
+    description: `Marie Lueder is a fashion designer who works as a narrator and sculptor researching men and their mental health through creating garments which work as 'mind-armour' for the wearer and displays the struggle of the reality fiction we live in through the microcosmos she is portraying.`,
+    author: `Marie Lueder`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

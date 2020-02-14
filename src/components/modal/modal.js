@@ -14,7 +14,7 @@ const ModalWrapper = styled.div`
   height: 100vh;
   grid-template-rows: [row1-start] 10%;
   grid-template-columns: 1fr;
-  /* padding: 0 1.2rem; */
+  padding: 0 1.2rem;
   @media (max-width: ${size.tablet}) {
     width: 100vw;
     left: 0;
@@ -39,7 +39,7 @@ const ModalHeader = styled.div`
   align-content: flex-start;
   display: flex;
   flex-grow: 1;
-  padding: 1rem;
+  padding: 1rem 2rem;
   padding-bottom: 0rem;
   flex-direction: row;
   justify-content: space-between;
@@ -57,8 +57,9 @@ const FixedHeader = styled.div`
   width: inherit;
   background: white;
   z-index: ${levels.modalText};
+  left: ${props => props.left ?  '0%' :  ''};
+  right: ${props => props.left ?  '' :  '0%'};
   @media (max-width: ${size.tablet}) {
-
     width: 100%;
   }
 `
@@ -66,7 +67,7 @@ const ModalBody = styled.div`
   padding: 1rem;
   padding-top: ${props => (props.noOfColumns === 1 ? "1rem" : "2rem")};
   display: grid;
-  width: ${props => (props.noOfColumns === 1 ? "56%" : "100%")};
+  width: ${props => (props.noOfColumns === 1 ? "50%" : "100%")};
   grid-template-columns: ${props =>
     props.noOfColumns === 1 ? "1fr" : "5fr 5fr 0.5fr"};
 
@@ -108,7 +109,7 @@ class Modal extends React.Component {
         noOfColumns={this.props.noOfColumns}
       >
         {/* <ModalHeaderWrapper show={this.props.noOfColumns === 1}> */}
-        <FixedHeader>
+        <FixedHeader left={this.props.left}>
           <ModalHeader show={true}>
             <ModalTitleContainer noOfColumns={this.props.title.length}>
               {this.props.title.map((tit, index) => (
@@ -119,7 +120,7 @@ class Modal extends React.Component {
               onClick={() => this.props.hideModal()}
               isActive={this.props.show_modal}
               barColor="black"
-              buttonWidth={30}
+              buttonWidth={25}
             />
           </ModalHeader>
         </FixedHeader>

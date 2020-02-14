@@ -52,6 +52,7 @@ class NavbarMobile extends React.Component {
             onClick={() => this.props.showModal(<NavbarMobileText />, [''])}
             isActive={this.props.show_modal}
             barColor="white"
+            buttonWidth={25}
           />
         </NavbarHeaderMobile>
       </NavbarMobileWrapper>
