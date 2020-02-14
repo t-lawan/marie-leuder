@@ -1,9 +1,29 @@
-import { createGlobalStyle } from "styled-components"
-
+import { createGlobalStyle, injectGlobal } from "styled-components"
+import SwissNormal from "./components/assets/fonts/Swiss_721_W01_Roman.woff"
+import SwissBold from "./components/assets/fonts/Swiss_721_Bold.woff"
+import SwissItalic from "./components/assets/fonts/Swiss_721_Italic.woff"
 export const GlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: Swiss;
+    src: url(${SwissNormal}) format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: Swiss;
+    src: url(${SwissBold}) format('woff');
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: Swiss;
+    src: url(${SwissItalic}) format('woff');
+    font-weight: normal;
+    font-style: italic;
+  }
     * {
 box-sizing: border-box;
-@import url('https://fonts.googleapis.com/css?family=Arimo:400,400i,700,700i&display=swap');
 }
 .fade_in{
   animation-name: fadeIn;
@@ -24,7 +44,7 @@ body {
   height: 100%;
   margin: 0 0;
   font-style: normal; 
-  font-family: 'Arimo', sans-serif;
+  font-family: 'Swiss', Fallback, sans-serif;
   background: black; 
   }
   h1,h2,h3,h4,h5,h6 {
@@ -91,7 +111,7 @@ p{
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  font-size: 0.9em;
+  font-size: 1em;
   line-height: 1.3;
 }
 li {
