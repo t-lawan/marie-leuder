@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import { levels, size } from "../../index.styles"
 import PropTypes from "prop-types"
 import * as ActionTypes from "../../store/action"
-import { HamburgerElasticReverse } from "react-animated-burgers"
+import { HamburgerBoring } from "react-animated-burgers"
 
 const ModalWrapper = styled.div`
   display: ${props => (props.show ? "grid" : "none")};
@@ -31,7 +31,7 @@ const ModalWrapper = styled.div`
 
 `
 
-const Hamburger = styled(HamburgerElasticReverse)`
+const Hamburger = styled(HamburgerBoring)`
   padding: 0.1rem;
   justify-self: end;
   /* top: 0; */
