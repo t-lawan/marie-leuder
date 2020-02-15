@@ -26,6 +26,9 @@ const ModalWrapper = styled.div`
   background: white;
   overflow-y: scroll;
   grid-template-areas: "header header" "main main";
+  /* transform: translateY(-100%); */
+  animation: transform 400ms ease-in;
+
 `
 
 const Hamburger = styled(HamburgerElasticReverse)`
@@ -73,9 +76,8 @@ const ModalBody = styled.div`
   /* margin-top: 5rem; */
 
   @media (max-width: ${size.tablet}) {
-    grid-template-columns: ${props =>
-      props.noOfColumns === 1 ? "10fr 1fr" : "11fr 1fr"};
-    width: 85%;
+    grid-template-columns: 1fr;
+    width: 100%;
   }
   grid-column-gap: 1.7rem;
   align-items: flex-start;
@@ -94,11 +96,29 @@ const ModalTitle = styled.h2`
   padding-left: 0;
 `
 class Modal extends React.Component {
+  modalRef;
   constructor(props) {
     super(props)
+    this.modalRef = React.createRef();
     this.state = {
       show: this.props.show_modal,
     }
+  }
+
+  componentDidUpdate(prevProps) {
+    // if(this.props.show_modal !== prevProps.show_modal) {
+    //   if(this.props.show_modal) {
+    //     console.log('OPEN');
+    //     this.modalRef.current.classList.remove('slide-out');
+    //     this.modalRef.current.classList.add('slide-in');
+
+
+    //   } else {
+    //     console.log('CLOSE');
+    //     this.modalRef.current.classList.remove('slide-in');
+    //     this.modalRef.current.classList.add('slide-out');
+    //   }
+    // }
   }
 
   render() {
@@ -107,6 +127,8 @@ class Modal extends React.Component {
         show={this.props.show_modal}
         left={this.props.left}
         noOfColumns={this.props.noOfColumns}
+        ref={this.modalRef}
+        // className={this.props.show_modal ? 'slide-in' : 'slide-out'}
       >
         {/* <ModalHeaderWrapper show={this.props.noOfColumns === 1}> */}
         <FixedHeader left={this.props.left}>

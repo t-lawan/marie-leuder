@@ -119,11 +119,11 @@ li {
 }
 
 .slide-in {
-  animation: slidein 1s ease-in-out;
+  transform: translateY(0%) !important;
 }
 
 .slide-out {
-  animation: slideout 1s ease-in-out;
+  transform: translateY(-100%) !important;
 }
 
 @keyframes slidein {
