@@ -17,6 +17,9 @@ const OrderedList = styled.ul`
     text-decoration: none;
     list-style-type: none;
     margin-bottom: 0;
+    p {
+      margin-bottom: 0;
+    }
   }
 `
 
@@ -30,6 +33,9 @@ const UnorderedList = styled.ul`
     text-decoration: none;
     list-style-type: none;
     margin-bottom: 0;
+    p {
+      margin-bottom: 0;
+    }
   }
 `
 
