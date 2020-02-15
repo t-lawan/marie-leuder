@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { levels } from "../../index.styles";
+import { levels, size } from "../../index.styles";
 import { connect } from "react-redux"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { richTextOptions } from "../../utils/richtext";
@@ -9,6 +9,10 @@ const PageContentWrapper = styled.section`
   /* padding: 1rem; */
   z-index: ${levels.navbar};
   padding-bottom: 5rem;
+  @media (max-width: ${size.tablet}) {
+    padding-bottom: 7rem;
+
+  }
   padding-top: ${props => props.isLong ? '7em' : '5rem'};
 `
 
@@ -36,7 +40,6 @@ const PageContent = props => {
     let page = props.pages.find((pg) => {
       return pg.id === id;
     })
-    console.log('PG', page.title.length)
     return (
         <PageContentWrapper isLong={page.title.length > 13}>
           <PageContentTitle hidden={!props.withParagraph}> {page.title.toUpperCase()}</PageContentTitle>

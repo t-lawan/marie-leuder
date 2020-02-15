@@ -117,6 +117,35 @@ p{
 li {
   list-style-type: lower-roman;
 }
+
+.slide-in {
+  animation: slidein 1s ease-in-out;
+}
+
+.slide-out {
+  animation: slideout 1s ease-in-out;
+}
+
+@keyframes slidein {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes slideout {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-100%);
+  }
+}
+
 `
 export const levels = {
   background: 0,
