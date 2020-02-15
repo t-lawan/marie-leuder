@@ -1,4 +1,4 @@
-import { createGlobalStyle, injectGlobal } from "styled-components"
+import { createGlobalStyle } from "styled-components"
 import SwissNormal from "./components/assets/fonts/Swiss_721_W01_Roman.woff"
 import SwissBold from "./components/assets/fonts/Swiss_721_Bold.woff"
 import SwissItalic from "./components/assets/fonts/Swiss_721_Italic.woff"
@@ -102,7 +102,7 @@ img {
   padding-top: 0;
   margin-bottom: 1.45rem;
 }
-p{
+p, li{
   margin-left: 0;
   margin-right: 0;
   margin-top: 0;
