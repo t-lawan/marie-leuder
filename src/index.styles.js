@@ -1,4 +1,4 @@
-import { createGlobalStyle, injectGlobal } from "styled-components"
+import { createGlobalStyle } from "styled-components"
 import SwissNormal from "./components/assets/fonts/Swiss_721_W01_Roman.woff"
 import SwissBold from "./components/assets/fonts/Swiss_721_Bold.woff"
 import SwissItalic from "./components/assets/fonts/Swiss_721_Italic.woff"
@@ -102,7 +102,7 @@ img {
   padding-top: 0;
   margin-bottom: 1.45rem;
 }
-p{
+p, li{
   margin-left: 0;
   margin-right: 0;
   margin-top: 0;
@@ -117,6 +117,35 @@ p{
 li {
   list-style-type: lower-roman;
 }
+
+.slide-in {
+  transform: translateY(0%) !important;
+}
+
+.slide-out {
+  transform: translateY(-100%) !important;
+}
+
+@keyframes slidein {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes slideout {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-100%);
+  }
+}
+
 `
 export const levels = {
   background: 0,
