@@ -131,7 +131,6 @@ class Modal extends React.Component {
   }
 
   render() {
-    console.log('TITLE', this.props.title);
     return (
       <ModalWrapper
         show={this.props.show_modal}
