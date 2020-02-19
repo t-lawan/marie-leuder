@@ -26,6 +26,8 @@ const NavbarMobileWrapper = styled.div`
 const NavbarMobileLogo = styled.img`
   max-width: 40%;
   margin-bottom: 0;
+  margin: 0;
+  padding: 0;
 `
 
 const NavbarHeaderMobile = styled.nav`
@@ -34,6 +36,11 @@ const NavbarHeaderMobile = styled.nav`
   justify-content: space-between;
   align-items: center;
   z-index: ${levels.navbar};
+`
+
+const Hamburger = styled(HamburgerBoring)`
+  margin: 0;
+  padding: 0;
 `
 
 class NavbarMobile extends React.Component {
@@ -49,9 +56,9 @@ class NavbarMobile extends React.Component {
       <NavbarMobileWrapper showInMobile={this.props.showInMobile}>
         <NavbarHeaderMobile>
           <NavbarMobileLogo src={Logo} />
-          <HamburgerBoring
+          <Hamburger
             onClick={() => this.props.showModal(<NavbarMobileText />, [''])}
-            isActive={this.props.show_modal}
+            isActive={false}
             barColor="white"
             buttonWidth={25}
           />

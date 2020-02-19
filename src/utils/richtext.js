@@ -10,10 +10,8 @@ const HEADING_TWO = styled.h4`
 const OrderedList = styled.ul`
   margin: 0;
   padding: 0.5rem 0;
+  padding-top: 0;
   li {
-    &:first-of-type {
-      font-weight: bold;
-    }
     text-decoration: none;
     list-style-type: none;
     margin-bottom: 0;
@@ -26,10 +24,9 @@ const OrderedList = styled.ul`
 const UnorderedList = styled.ul`
   margin: 0;
   padding: 0.5rem 0;
+  padding-top: 0;
   li {
-    &:first-of-type {
-      /* font-weight: bold; */
-    }
+
     text-decoration: none;
     list-style-type: none;
     margin-bottom: 0;
