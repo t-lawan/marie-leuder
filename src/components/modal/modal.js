@@ -7,14 +7,15 @@ import * as ActionTypes from "../../store/action"
 import { HamburgerBoring } from "react-animated-burgers"
 
 const ModalWrapper = styled.div`
+  display:grid;
   display: ${props => (props.show ? "grid" : "none")};
-  top: 0;
+  top: 0 !important;
   width: 50vw;
   left: ${props => (props.left ? "0%" : "50%")};
   height: 100vh;
   grid-template-rows: [row1-start] 10%;
   grid-template-columns: 1fr;
-  padding: 0 1.2rem;
+  padding: 0 1rem;
   @media (max-width: ${size.tablet}) {
     width: 100vw;
     left: 0;
@@ -27,13 +28,14 @@ const ModalWrapper = styled.div`
   overflow-y: scroll;
   grid-template-areas: "header header" "main main";
   /* transform: translateY(-100%); */
-  animation: transform 400ms ease-in;
-
+  transition: transform 200ms ease-in;
 `
 
 const Hamburger = styled(HamburgerBoring)`
   padding: 0.1rem;
   justify-self: end;
+  margin: 0;
+  padding: 0;
   /* top: 0; */
   /* position: fixed; */
 `
@@ -51,33 +53,39 @@ const ModalHeader = styled.div`
   display: ${props => (props.show ? "flex" : "none")};
   /* position: sticky; */
   background: white;
-  top: 0;
   z-index: ${levels.modalText};
+  @media (max-width: ${size.tablet}) {
+    padding: 0.5rem 1.2rem;
+    padding-top: ${props => props.noTitle ? '1.5rem': '1rem'};
+    margin: 0;
+  }
 `
 const FixedHeader = styled.div`
+  top: 0 !important;
   position: fixed;
   /* width: 50%; */
   width: inherit;
   background: white;
   z-index: ${levels.modalText};
-  left: ${props => props.left ?  '0%' :  ''};
-  right: ${props => props.left ?  '' :  '0%'};
+  left: ${props => (props.left ? "0%" : "")};
+  right: ${props => (props.left ? "" : "0%")};
   @media (max-width: ${size.tablet}) {
     width: 100%;
   }
 `
 const ModalBody = styled.div`
-  padding: 1rem;
+  padding: 2rem 1rem;
   padding-top: ${props => (props.noOfColumns === 1 ? "1rem" : "2rem")};
   display: grid;
-  width: ${props => (props.noOfColumns === 1 ? "50%" : "100%")};
+  width: ${props => (props.noOfColumns === 1 ? "52.6%" : "100%")};
   grid-template-columns: ${props =>
-    props.noOfColumns === 1 ? "1fr" : "5fr 5fr 0.5fr"};
+    props.noOfColumns === 1 ? "1fr" : "6.7fr 5fr 0.5fr"};
   /* margin-top: 5rem; */
 
   @media (max-width: ${size.tablet}) {
     grid-template-columns: 1fr;
     width: 100%;
+    padding: 1rem 0.3rem;
   }
   grid-column-gap: 1.7rem;
   align-items: flex-start;
@@ -88,18 +96,21 @@ const ModalTitleContainer = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: ${props =>
-    props.noOfColumns === 1 ? "1fr" : "9fr 9fr"};
+    props.noOfColumns === 1 ? "1fr" : "7fr 5.3fr"};
 `
 
 const ModalTitle = styled.h2`
   padding: 1rem;
   padding-left: 0;
+  @media (max-width: ${size.tablet}) {
+  padding: 0;
+  }
 `
 class Modal extends React.Component {
-  modalRef;
+  modalRef
   constructor(props) {
     super(props)
-    this.modalRef = React.createRef();
+    this.modalRef = React.createRef()
     this.state = {
       show: this.props.show_modal,
     }
@@ -111,8 +122,6 @@ class Modal extends React.Component {
     //     console.log('OPEN');
     //     this.modalRef.current.classList.remove('slide-out');
     //     this.modalRef.current.classList.add('slide-in');
-
-
     //   } else {
     //     console.log('CLOSE');
     //     this.modalRef.current.classList.remove('slide-in');
@@ -132,7 +141,7 @@ class Modal extends React.Component {
       >
         {/* <ModalHeaderWrapper show={this.props.noOfColumns === 1}> */}
         <FixedHeader left={this.props.left}>
-          <ModalHeader show={true}>
+          <ModalHeader noTitle={this.props.title.length > 0 ? this.props.title[0].length === 0: false} show={true}>
             <ModalTitleContainer noOfColumns={this.props.title.length}>
               {this.props.title.map((tit, index) => (
                 <ModalTitle key={index}>{tit.toUpperCase()} </ModalTitle>
@@ -140,7 +149,7 @@ class Modal extends React.Component {
             </ModalTitleContainer>
             <Hamburger
               onClick={() => this.props.hideModal()}
-              isActive={this.props.show_modal}
+              isActive={true}
               barColor="black"
               buttonWidth={25}
             />
