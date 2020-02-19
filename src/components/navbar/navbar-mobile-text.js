@@ -6,6 +6,9 @@ import PageContent from "../page-content/page-content";
 
 const Link = styled.h2`
     padding: 0.1rem;
+    padding-bottom: 0.4rem;
+    padding-top: 0;
+    margin: 0;
     :hover {
         cursor: pointer;
     }
@@ -13,7 +16,7 @@ const Link = styled.h2`
 
 const NavLinksContainer = styled.div`
     z-index: 2000;
-    padding-top: 0.5rem;
+    /* padding-top: 0.5rem; */
 
 `
 class NavbarMobileText extends React.Component {

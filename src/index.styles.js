@@ -24,6 +24,10 @@ export const GlobalStyle = createGlobalStyle`
   }
     * {
 box-sizing: border-box;
+::-webkit-scrollbar {
+    display: none;
+  }
+  scrollbar-width: none;
 }
 .fade_in{
   animation-name: fadeIn;
@@ -79,8 +83,9 @@ h3 {
 }
 h4 {
   margin-bottom: 0.5rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 1.1;
+  word-break: break-all; 
 }
 h5 {
   margin-bottom: 1.45rem;
@@ -111,19 +116,25 @@ p, li{
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  font-size: 1em;
+  font-size: 1rem;
   line-height: 1.3;
+}
+
+p {
+  line-height: 1.35rem;
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
 }
 li {
   list-style-type: lower-roman;
 }
 
 .slide-in {
-  transform: translateY(0%) !important;
+  transform: translateY(0%);
 }
 
 .slide-out {
-  transform: translateY(-100%) !important;
+  transform: translateY(-100%);
 }
 
 @keyframes slidein {

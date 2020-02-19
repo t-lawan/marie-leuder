@@ -9,10 +9,11 @@ const PageContentWrapper = styled.section`
   /* padding: 1rem; */
   z-index: ${levels.navbar};
   padding-bottom: 5rem;
+  padding-top: 5rem;
+
   @media (max-width: ${size.tablet}) {
-    padding-bottom: 7rem;
+    padding-top: ${props => (props.isLong ? "7em" : "5rem")};
   }
-  padding-top: ${props => (props.isLong ? "7em" : "5rem")};
 `
 
 const PageText = styled.div`
@@ -30,7 +31,10 @@ const PageTitleContainer = styled.div`
 `
 
 const PageContentTitle = styled.p`
-  padding-top: 0.8rem;
+  padding-top: 1rem;
+  @media (max-width: ${size.tablet}) {
+    padding-top: 0rem;
+  }
 `
 
 const PageContent = props => {
