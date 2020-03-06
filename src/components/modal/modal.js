@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { connect } from "react-redux"
-import { levels, size } from "../../index.styles"
+import { levels, size, Colour } from "../../index.styles"
 import PropTypes from "prop-types"
 import * as ActionTypes from "../../store/action"
 import { HamburgerBoring } from "react-animated-burgers"
@@ -29,6 +29,25 @@ const ModalWrapper = styled.div`
   grid-template-areas: "header header" "main main";
   /* transform: translateY(-100%); */
   transition: transform 200ms ease-in;
+
+  ::-webkit-scrollbar {
+  width: 15px;
+  @media (max-width: ${size.tablet}) {
+    width: 10px;
+
+  }
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  /*  box-shadow: inset 0 0 5px grey;  */
+  /* border-radius: 10px; */
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: ${Colour.orange}; 
+}
 `
 
 const Hamburger = styled(HamburgerBoring)`
