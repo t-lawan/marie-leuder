@@ -24,10 +24,6 @@ export const GlobalStyle = createGlobalStyle`
   }
     * {
 box-sizing: border-box;
-::-webkit-scrollbar {
-    display: none;
-  }
-  scrollbar-width: none;
 }
 .fade_in{
   animation-name: fadeIn;
@@ -174,4 +170,8 @@ export const size = {
   laptop: "1024px",
   laptopL: "1440px",
   desktop: "2560px",
+}
+
+export const Colour = {
+  orange: '#DB6B03'
 }
