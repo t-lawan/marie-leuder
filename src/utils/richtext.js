@@ -36,6 +36,12 @@ const UnorderedList = styled.ul`
   }
 `
 
+const AssetHyperlink =  styled.a`
+  :hover {
+    font-style: italic;
+  }
+`
+
 export const richTextOptions = {
     renderMark: {
       [MARKS.BOLD]: text => <strong>{text}</strong>
@@ -45,6 +51,8 @@ export const richTextOptions = {
       [BLOCKS.HEADING_4]: (node, children) => <HEADING_TWO> {children} </HEADING_TWO>,
       [INLINES.HYPERLINK]: (node, children) => <a href={node.data.uri} target="__blank">{children}</a>,
       [BLOCKS.OL_LIST]: (node, children) => <OrderedList> {children} </OrderedList>,
-      [BLOCKS.UL_LIST]: (node, children) => <UnorderedList> {children} </UnorderedList>
+      [BLOCKS.UL_LIST]: (node, children) => <UnorderedList> {children} </UnorderedList>,
+      [INLINES.ASSET_HYPERLINK]: (node, children) => <AssetHyperlink href={node.data.target.fields.file['en-US'].url} target="__blank">{children}</AssetHyperlink>
+,
     }
   };
