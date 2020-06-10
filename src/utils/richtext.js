@@ -37,6 +37,7 @@ const UnorderedList = styled.ul`
 `
 
 const AssetHyperlink =  styled.a`
+  text-decoration: underline;
   :hover {
     font-style: italic;
   }
