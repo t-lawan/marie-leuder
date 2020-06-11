@@ -6,6 +6,7 @@ const initialState = {
   mobileNavbarLinks: [],
   videos: [],
   background_images: [],
+  isReady: false,
   isLoaded: false,
   currentVideo: null,
   show_modal: false,

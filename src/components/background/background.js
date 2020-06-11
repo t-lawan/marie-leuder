@@ -11,7 +11,7 @@ import {
 import "@fortawesome/fontawesome-svg-core/styles.css"
 import { shuffle } from "../../utils/shuffle"
 // import Img from 'gatsby-image';
-const VideoWrapper = styled.video`
+export const VideoWrapper = styled.video`
   position: fixed;
   top: 50%;
   left: 50%;

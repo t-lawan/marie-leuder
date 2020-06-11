@@ -8,6 +8,7 @@ import NavbarMobile from "../navbar/navbar-mobile"
 import Modal from "../modal/modal"
 import { Animated } from "react-animated-css"
 import { connect } from "react-redux"
+import Construction from "../construction/construction";
 
 const LayoutWrapper = styled.div`
   /* padding: 1em; */
@@ -31,6 +32,7 @@ const Layout = props => {
       >
         <GlobalStyle />
         <State />
+        <Construction />
         <Background hideInMobile />
         <Navbar hideInMobile />
         <Modal showInMobile />
