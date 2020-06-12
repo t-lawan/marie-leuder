@@ -16,21 +16,36 @@ const ConstructionWrapper = styled.div`
 
 const Text =  styled.div`
   z-index:1020;
-  top: 50%;
-  left: 20%;
+  ${'' /* top: 50%; */}
+  ${'' /* left: 20%; */}
   margin: 0 1rem ;
   position: fixed;
   text-align: center;
 
-  @media (max-width: ${size.laptop}) {
+  ${'' /* @media (max-width: ${size.laptop}) {
     left: 13%;
   }
   @media (max-width: ${size.mobileXL}) {
     left: 0%;
-  }
+  } */}
   
 `
 
+const TopHeader = styled.h5`
+    left: 50%;
+    padding-top: 1rem;
+    position: fixed;
+    text-align: center;
+    transform: translate(-50%, 0);
+`
+
+const BottomHeader = styled.h5`
+    bottom: 0;
+    position: fixed;
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%, 0);
+`
 const ConstructionVideoWrapper = styled.video`
   z-index: ${levels.modalText};
   position: fixed;
@@ -52,8 +67,8 @@ const Construction = props => {
   return (
     <ConstructionWrapper hide={!props.isReady}>
        <Text>
-           <h4> 12.06.2020 11.55 BTS LUEDER 20/20 launch @ www.londonfashionweek.co.uk/lueder</h4>
-           <h4> #LFW #LFWRESET #POSITIVEFASHION</h4>
+           <TopHeader> 12.06.2020 11.55 BTS  LUEDER 20/20  launch @ www.londonfashionweek.co.uk/lueder</TopHeader>
+           <BottomHeader> #LFW #LFWRESET #POSITIVEFASHION</BottomHeader>
        </Text>
       <ConstructionVideoWrapper
         autoPlay
