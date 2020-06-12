@@ -53,7 +53,7 @@ const Construction = props => {
     <ConstructionWrapper hide={!props.isReady}>
        <Text>
            <h4> 12.06.2020 11.55 BTS LUEDER 20/20 launch @ www.londonfashionweek.co.uk/lueder</h4>
-           <h4> LFW #LFWRESET #POSITIVEFASHION</h4>
+           <h4> #LFW #LFWRESET #POSITIVEFASHION</h4>
        </Text>
       <ConstructionVideoWrapper
         autoPlay
