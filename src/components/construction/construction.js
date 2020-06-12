@@ -2,10 +2,10 @@ import React from "react"
 import styled from "styled-components"
 import { connect } from "react-redux"
 import { levels, size } from "../../index.styles"
-import { VideoWrapper } from "../background/background"
 import ConstructionPlaceholder from '../assets/placeholder.mp4'
 const ConstructionWrapper = styled.div`
   /* position: fixed; */
+  display: ${props => (props.hide ? 'block': 'none')};
   margin: 0;
   padding: 0;
   background: black;
@@ -42,7 +42,7 @@ const ConstructionVideoWrapper = styled.video`
 
 const Construction = props => {
   return (
-    <ConstructionWrapper show={props.isReady}>
+    <ConstructionWrapper hide={!props.isReady}>
        <Text>
            <h2> 12.06.2020 11.55 BTS LUEDER 20/20 launch @ www.londonfashionweek.co.uk/lueder  </h2>
            <h2> LFW #LFWRESET #POSITIVEFASHION</h2>
