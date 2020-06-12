@@ -6,6 +6,7 @@ const initialState = {
   mobileNavbarLinks: [],
   videos: [],
   background_images: [],
+  isReady: false,
   isLoaded: false,
   currentVideo: null,
   show_modal: false,
@@ -35,13 +36,17 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         isLoaded: true,
       })
+    case actionTypes.IS_READY:
+      return Object.assign({}, state, {
+        isReady: true,
+      })
     case actionTypes.SET_VIDEOS:
       return Object.assign({}, state, {
         videos: action.videos,
       })
     case actionTypes.SET_BACKGROUND_IMAGES:
-      return Object.assign({},  state, {
-        background_images: action.background_images
+      return Object.assign({}, state, {
+        background_images: action.background_images,
       })
     case actionTypes.SET_CURRENT_VIDEO:
       return Object.assign({}, state, {
@@ -53,19 +58,19 @@ const reducer = (state = initialState, action) => {
         modal_component: action.component,
         modal_title: action.title,
         modal_position_left: action.left,
-        modal_number_of_columns: action.noOfColumns
+        modal_number_of_columns: action.noOfColumns,
       })
     case actionTypes.HIDE_MODAL:
       return Object.assign({}, state, {
         show_modal: false,
         modal_component: null,
-        modal_title: ['']
+        modal_title: [""],
       })
-    case actionTypes.SET_MOBILE_NAVBAR_LINKS: 
+    case actionTypes.SET_MOBILE_NAVBAR_LINKS:
       return Object.assign({}, state, {
-        mobileNavbarLinks: action.mobileNavbarLinks
+        mobileNavbarLinks: action.mobileNavbarLinks,
       })
-      case actionTypes.SLIDE_RIGHT_TRANSITION:
+    case actionTypes.SLIDE_RIGHT_TRANSITION:
       return Object.assign({}, state, {
         experience_transition: {
           animationIn: "slideInRight",
@@ -96,6 +101,6 @@ const reducer = (state = initialState, action) => {
 }
 export const store = () =>
   createStore(
-    reducer,
+    reducer
     // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )

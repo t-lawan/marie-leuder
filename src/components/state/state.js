@@ -3,6 +3,7 @@ import { connect } from "react-redux"
 import { useStaticQuery, graphql } from "gatsby"
 import * as ActionTypes from "../../store/action"
 import { Convert } from "../../utils/convert"
+import moment from 'moment'
 const State = props => {
   //   if (!props.isLoaded) {
   const data = useStaticQuery(
@@ -106,6 +107,13 @@ const State = props => {
     Convert.toVideoModel
   )
 
+  // Check if current datetime is greater than set date time
+
+  let setDate = moment('2020-06-12T12:00:00+01:00')
+  const isReady =  moment().isSameOrAfter(setDate);
+  if(isReady) {
+    props.isReady()
+  }
   props.setBackgroundImages(backgroundImages)
   props.setNavLinks(navLinks)
   props.setMobileNavLinks(mobileNavLinks)
@@ -152,6 +160,10 @@ const mapDispatchToProps = dispatch => {
     loaded: () =>
       dispatch({
         type: ActionTypes.IS_LOADED,
+      }),
+    isReady: () =>
+      dispatch({
+        type: ActionTypes.IS_READY,
       }),
   }
 }
