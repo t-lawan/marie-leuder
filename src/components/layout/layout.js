@@ -8,6 +8,7 @@ import NavbarMobile from "../navbar/navbar-mobile"
 import Modal from "../modal/modal"
 import { Animated } from "react-animated-css"
 import { connect } from "react-redux"
+import Construction from "../construction/construction"
 
 const LayoutWrapper = styled.div`
   /* padding: 1em; */
@@ -31,11 +32,16 @@ const Layout = props => {
       >
         <GlobalStyle />
         <State />
-        <Background hideInMobile />
-        <Navbar hideInMobile />
-        <Modal showInMobile />
-        <NavbarMobile showInMobile />
-        <Main>{props.children}</Main>
+        <Construction />
+        {props.isReady ? (
+          <>
+            <Background hideInMobile />
+            <Navbar hideInMobile />
+            <Modal showInMobile />
+            <NavbarMobile showInMobile />
+            <Main>{props.children}</Main>
+          </>
+        ) : null}
       </Animated>
     </LayoutWrapper>
   )
@@ -44,6 +50,7 @@ const Layout = props => {
 const mapStateToProps = state => {
   return {
     experience_transition: state.experience_transition,
+    isReady: state.isReady,
   }
 }
 
