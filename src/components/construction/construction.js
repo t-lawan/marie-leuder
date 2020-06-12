@@ -65,7 +65,7 @@ const ConstructionVideoWrapper = styled.video`
 
 const Construction = props => {
   return (
-    <ConstructionWrapper hide={!props.isReady}>
+    <ConstructionWrapper hide={false}>
        <Text>
            <TopHeader> 12.06.2020 11.55 BTS  LUEDER 20/20  launch @ www.londonfashionweek.co.uk/lueder</TopHeader>
            <BottomHeader> #LFW #LFWRESET #POSITIVEFASHION</BottomHeader>
