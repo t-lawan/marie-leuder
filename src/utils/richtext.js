@@ -2,7 +2,7 @@ import React from "react"
 import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
 import styled from "styled-components"
 import ARROW_IMAGE from "../components/assets/LUEDER-ARROW.png"
-import { size } from "../index.styles";
+import { size } from "../index.styles"
 const HEADING_TWO = styled.h4`
   font-style: initial;
   font-weight: normal;
@@ -36,12 +36,15 @@ const UnorderedList = styled.ul`
   }
 `
 const LinkIcon = styled.img`
-width: 10%;
-display: inline-flex;
-margin-right: 1rem;
-/* @media (max-width: ${size.tablet}) {
-  mari
-  } */
+  width: 10%;
+  display: inline-flex;
+  margin-right: 1rem;
+  @media (max-width: ${size.tablet}) {
+    width: 4%;
+  }
+  @media (max-width: ${size.mobileL}) {
+    width: 10%;
+  }
 `
 
 const HyperlinkWrapper = styled.div`
