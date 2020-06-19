@@ -37,6 +37,7 @@ export class Convert {
         return new PageModel(
             contentfulModel.contentful_id,
             contentfulModel.title,
+            contentfulModel.showTitle,
             contentfulModel.slug,
             contentfulModel.template,
             contentfulModel.content

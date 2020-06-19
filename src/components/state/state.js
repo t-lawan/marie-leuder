@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import { useStaticQuery, graphql } from "gatsby"
 import * as ActionTypes from "../../store/action"
 import { Convert } from "../../utils/convert"
-import moment from 'moment'
+import moment from "moment"
 const State = props => {
   //   if (!props.isLoaded) {
   const data = useStaticQuery(
@@ -55,6 +55,7 @@ const State = props => {
             node {
               contentful_id
               title
+              showTitle
               slug
               content {
                 json
@@ -109,9 +110,9 @@ const State = props => {
 
   // Check if current datetime is greater than set date time
 
-  let setDate = moment('2020-06-12T12:00:00+01:00')
-  const isReady =  moment().isSameOrAfter(setDate);
-  if(isReady) {
+  let setDate = moment("2020-06-12T12:00:00+01:00")
+  const isReady = moment().isSameOrAfter(setDate)
+  if (isReady) {
     props.isReady()
   }
   props.setBackgroundImages(backgroundImages)
