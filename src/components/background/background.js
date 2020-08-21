@@ -158,7 +158,6 @@ class Background extends React.Component {
           onEnded={() => this.nextVideo()}
           ref={this.videoRef}
           autoPlay
-          muted
           loop
           playsInline={true}
           disablePictureInPicture={true}
