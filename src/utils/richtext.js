@@ -84,16 +84,16 @@ export const richTextOptions = {
     [BLOCKS.UL_LIST]: (node, children) => (
       <UnorderedList> {children} </UnorderedList>
     ),
-    [INLINES.ASSET_HYPERLINK]: (node, children) => (
-      <HyperlinkWrapper>
-        <LinkIcon src={ARROW_IMAGE} />
-        <AssetHyperlink
+    [INLINES.ASSET_HYPERLINK]: (node, children) =>  (
+        <HyperlinkWrapper>
+          <LinkIcon src={ARROW_IMAGE} />
+          <AssetHyperlink
           href={node.data.target.fields.file["en-US"].url}
           target="__blank"
         >
           {children}
         </AssetHyperlink>
-      </HyperlinkWrapper>
-    ),
+        </HyperlinkWrapper>
+      ),
   },
 }

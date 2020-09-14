@@ -54,11 +54,14 @@ class Navbar extends React.Component {
   }
 
   generatePages(link) {
-    let pageIds = link.page_ids
+    let pages = link.pages;
+    pages = pages.sort((a, b) => {
+      return (a.order - b.order)
+    })
     return (
       <>
-        {pageIds.map((id, index) => (
-          <PageContent withParagraph={pageIds.length ===  1} withTitle={pageIds.length > 1} key={index} id={id} />
+        {pages.map((page, index) => (
+          <PageContent withParagraph={pages.length ===  1} withTitle={pages.length > 1} key={index} id={page.contentful_id} />
         ))}
       </>
     )
@@ -71,11 +74,20 @@ class Navbar extends React.Component {
       return pageIds.includes(pg.id);
     }).filter((pg) => {
       return pg.show_title
+    }).sort((a,b) => {
+      return a.order - b.order
     })
 
-    return pages.map((pg, index) => {
+
+    let titles = pages.map((pg, index) => {
       return pg.title
     });
+
+    // titles = titles.sort((a, b) => {
+    //  return (a.localeCompare(b))
+    // })
+
+    return titles
   }
 
   hideAllLinks = () => {
