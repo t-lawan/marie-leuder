@@ -18,6 +18,7 @@ const State = props => {
               order
               pages {
                 contentful_id
+                order
               }
             }
           }
@@ -61,6 +62,7 @@ const State = props => {
                 json
               }
               template
+              order
             }
           }
         }

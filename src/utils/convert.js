@@ -6,12 +6,14 @@ import { BackgroundImageModel } from "../models/BackgroundImageModel";
 
 export class Convert {
     static toNavLinkModel = contentfulModel => {
-        let pages = contentfulModel.pages.map((page) => {
+        let pages = contentfulModel.pages
+        let pageIds = contentfulModel.pages.map((page) => {
             return page.contentful_id;
         })
         return new NavLinkModel(
             contentfulModel.contentful_id,
             contentfulModel.title,
+            pageIds,
             pages,
             contentfulModel.order
         )
@@ -40,7 +42,8 @@ export class Convert {
             contentfulModel.showTitle,
             contentfulModel.slug,
             contentfulModel.template,
-            contentfulModel.content
+            contentfulModel.content,
+            contentfulModel.order
         )
     }
 
