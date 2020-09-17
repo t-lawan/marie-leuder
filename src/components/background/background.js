@@ -99,8 +99,12 @@ class Background extends React.Component {
   index
   videoRef
   visibleTransitionTime = 5000
+  isPlaying = false
   constructor(props) {
     super(props)
+    this.state = {
+      index: 0,
+    }
     this.videoRef = React.createRef()
   }
 
@@ -110,6 +114,12 @@ class Background extends React.Component {
     this.setState({
       index: randomNumber
     });
+  }
+
+  componentDidUpdate(prevProps) {
+    if(prevProps.onUserInteracted !== this.props.onUserInteracted) {
+      this.videoRef.current.play();
+    }
   }
 
   nextVideo = () => {
@@ -149,6 +159,8 @@ class Background extends React.Component {
 
     this.videoRef.current.load()
   }
+
+
 
   render() {
     return (
