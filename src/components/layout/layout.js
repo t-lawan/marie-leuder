@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { GlobalStyle, size } from "../../index.styles"
 import State from "../state/state"
@@ -20,8 +20,14 @@ const Main = styled.main`
   }
 `
 const Layout = props => {
+  let [userInteracted, setUserInteracted] = useState(false);
+  let onMouseDown = () => {
+    if(!userInteracted) {
+      setUserInteracted(true);s
+    }
+  }
   return (
-    <LayoutWrapper>
+    <LayoutWrapper onMouseDown={() => onMouseDown()}>
       <Animated
         animationIn={props.experience_transition.animationIn}
         animationOut={props.experience_transition.animationOut}
@@ -35,7 +41,7 @@ const Layout = props => {
         <Construction />
         {props.isReady ? (
           <>
-            <Background hideInMobile />
+            <Background onUserInteracted={userInteracted} hideInMobile />
             <Navbar hideInMobile />
             <Modal showInMobile />
             <NavbarMobile showInMobile />
