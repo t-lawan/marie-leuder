@@ -23,7 +23,7 @@ const Layout = props => {
   let [userInteracted, setUserInteracted] = useState(false);
   let onMouseDown = () => {
     if(!userInteracted) {
-      setUserInteracted(true);s
+      setUserInteracted(true);
     }
   }
   return (
