@@ -115,7 +115,7 @@ const ModalTitleContainer = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: ${props =>
-    props.noOfColumns === 1 ? "1fr" : "7fr 5.3fr"};
+    props.noOfColumns === 1 ? "1fr" : "6.7fr 5.5fr"};
 `
 
 const ModalTitle = styled.h2`
